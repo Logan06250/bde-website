@@ -14,4 +14,4 @@ services:
 
 cache:
   directories:
-- vendor
+    - vendor
