@@ -2,6 +2,8 @@
 ## Local
     docker-compose up
 
+In .env file : DB_HOST=mariadb
+
 ## Install Heroku CLI
     sudo snap install heroku --classic
 
