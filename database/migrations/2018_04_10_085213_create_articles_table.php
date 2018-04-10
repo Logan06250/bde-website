@@ -15,6 +15,11 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+            $table->varchar('image');
+            $table->float('price');
+            $table->sold('int');
             $table->timestamps();
         });
     }
