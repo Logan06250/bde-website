@@ -57,7 +57,7 @@
                                                         class="fa fa-caret-down"></i></a>
                                             <ul class="dropdown-menu" role="menu">
                                                 @if(Auth::check())
-                                                    @if(Auth::user()->role==2)
+                                                    @if(Auth::user()->role==4)
                                                         <li>
                                                             <a href="{{ url('admin') }}"><i class="fa fa-tachometer"></i> Panel d administration</a>
                                                         </li>
@@ -87,3 +87,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
+
+
