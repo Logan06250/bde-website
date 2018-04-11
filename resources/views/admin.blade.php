@@ -46,12 +46,11 @@
                                 @endif
                             </td>
                             <td>
-                                <p>
-                                    <a href=""class="button">Editer le role</a>
-                                </p>
+                                    <a  type="button" href="{{action('AdminController@beStudent', $user->id)}}" class="btn btn-success">Étudiant</a>
+                                    <a  type="button" href="{{action('AdminController@beCesi', $user->id)}}" class="btn btn-info">Cesi</a>
+                                    <a  type="button" href="{{action('AdminController@beBDE', $user->id)}}" class="btn btn-warning">BDE</a>
+                                    <a  type="button" href="{{action('AdminController@beAdmin', $user->id)}}" class="btn btn-danger">Admin</a>
                             </td>
-
-                            
                         </tr>
                     @endforeach
                     
