@@ -35,7 +35,7 @@ class User extends Authenticatable
     
     public function isAdmin() {
 
-        return $this->role==2;
+        return $this->role==4;
 
     }
     public function isBDE() {
@@ -45,7 +45,7 @@ class User extends Authenticatable
     }
     public function isCesi() {
 
-        return $this->role==4;
+        return $this->role==2;
 
     }
 }
