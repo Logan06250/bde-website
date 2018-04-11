@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::resource('/ideas','IdeaController');
 Route::get('/home', 'HomeController@index')->name('home');
