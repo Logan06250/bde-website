@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-    <br />
+    <br/>
     @if (\Session::has('success'))
       <div class="alert alert-success">
         <p>{{ \Session::get('success') }}</p>
@@ -11,7 +11,7 @@
      @endif
 
      <h1> </h1>
-     <br>
+     <br/>
 
     <div class="row">
 
@@ -23,7 +23,7 @@
                 <h3>{{$article['name']}}</h3>
                 <p>{{$article['description']}}</p>
                 <strong>{{$article['price']}} €</strong>
-                <br>
+                <br/>
                 <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a> 
                 <a href="{{action('ArticleController@destroy', $article['id'])}}" class="btn btn-danger" role="button">Supprimer</a></p>
              </div>
@@ -35,7 +35,5 @@
       </div>
   </table>
   </div>
-  </body>
-</html>
 
 @endsection
