@@ -37,8 +37,8 @@ class IdeaController extends Controller
     {
         $idea= new Idea();
         $idea->creator=$request->get('creator');
-        $idea->title=$request->get('description');
-        $idea->description=$request->get('title');
+        $idea->title=$request->get('title');
+        $idea->description=$request->get('description');
         $idea->save();
         return redirect('ideas')->with('success', 'Information has been added');
     }
