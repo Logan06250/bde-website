@@ -4,7 +4,8 @@
 
 <div class="container">
 
-      <h2>Modification de l'article</h2><br  />
+      <h2>Modification de l'article</h2>
+        <br/>
         <form method="post" action="{{action('ArticleController@update', $id)}}" enctype="multipart/form-data">
         {{csrf_field()}}        
         <input name="_method" type="hidden" value="PATCH">
@@ -51,8 +52,6 @@
           <div class="form-group col-md-4" style="margin-top:60px">
             <button type="submit" class="btn btn-success" style="margin-left:38px">Update</button>
           </div>
-
-
 
       </form>
     </div>

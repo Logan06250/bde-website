@@ -3,17 +3,17 @@
 @section('content')
 
     <div class="container">
-    <br />
+    <br/>
     @if (\Session::has('success'))
       <div class="alert alert-success">
         <p>{{ \Session::get('success') }}</p>
-      </div><br />
+      </div><br/>
      @endif
 
      <!-- Home of the shop -->
      <div class="jumbotron">
-        <h1>Bienvenu sur la boutique du BDE Mister</h1>
-        <p>Vous trouverez ici des truc bien et moins bien, cher et moins chers...</p>
+        <h2>Bienvenue sur la boutique du BDE Mister</h2>
+        <p>Vous trouverez ici des trucs bien et moins bien, chers et moins chers...</p>
      </div>
 
      <!-- Admin space -->
@@ -22,7 +22,7 @@
         <div class="thumbnail">
           <div class="caption">
             <h3>Espace admin</h3>
-            <br>
+            <br/>
             <a href="{{action('ArticleController@create')}}" class="btn btn-success" role="button">Ajouter un article</a>
           </div>
         </div>
@@ -42,9 +42,19 @@
                 <h3>{{$article['name']}}</h3>
                 <p>{{$article['description']}}</p>
                 <strong>{{$article['price']}} €</strong>
-                <p><a href="#" class="btn btn-primary" role="button">Ajouter au panier</a> 
-                <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a> 
-                <a href="{{action('ArticleController@destroy', $article['id'])}}" class="btn btn-danger" role="button">Supprimer</a></p>
+                <br/>
+                <br/>
+                <p> <a href="#" class="btn btn-primary" role="button">Ajouter au panier</a> 
+                  <hr/>
+                  <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a>
+                  <br/>
+                  <br/>
+                  <form action="{{action('ArticleController@destroy', $article['id'])}}" method="post">
+                    {{csrf_field()}}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                  </form> </p>
+                
              </div>
             </div>
           </div>
@@ -54,7 +64,5 @@
       </div>
   </table>
   </div>
-  </body>
-</html>
 
 @endsection
