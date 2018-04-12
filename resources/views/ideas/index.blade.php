@@ -23,14 +23,16 @@
               <td>{{$idea['title']}}</td>
               <td>{{$idea['creator']}}</td>
               <td>{{$idea['description']}}</td>  
-              <td><a href="{{action('IdeaController@edit', $idea['id'])}}" class="btn btn-warning">Edit</a></td>
-              <td>
-                <form action="{{action('IdeaController@destroy', $idea['id'])}}" method="post">
-                  {{ csrf_field() }}
-                  <input name="_method" type="hidden" value="DELETE">
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-              </td>
+              @if(Auth::check() && (Auth::user()->isAdmin()) || Auth::user()->isBDE()));
+                <td><a href="{{action('IdeaController@edit', $idea['id'])}}" class="btn btn-warning">Edit</a></td>
+                <td>
+                  <form action="{{action('IdeaController@destroy', $idea['id'])}}" method="post">
+                    {{ csrf_field() }}
+                    <input name="_method" type="hidden" value="DELETE">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                  </form>
+                </td>
+              @endif
             </tr>
           @endforeach
         </tbody>
