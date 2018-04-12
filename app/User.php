@@ -7,6 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    protected $table = 'users';
+
+    public $timestamp = false;
+
+    
     use Notifiable;
 
     /**
@@ -15,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
 
     /**
@@ -26,4 +32,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function isAdmin() {
+
+        return $this->role==4;
+
+    }
+    public function isBDE() {
+
+        return $this->role==3;
+
+    }
+    public function isCesi() {
+
+        return $this->role==2;
+
+    }
 }
