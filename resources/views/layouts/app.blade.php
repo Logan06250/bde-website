@@ -53,21 +53,21 @@
                                     @else
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                aria-expanded="false"><i class="fa fa-user"></i> {{"Bonjour "}}{{ Auth::user()->name }} <i
-                                                        class="fa fa-caret-down"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                @if(Auth::check())
-                                                    @if(Auth::user()->role==4)
-                                                        <li>
-                                                            <a href="{{ url('admin') }}"><i class="fa fa-tachometer"></i> Panel d administration</a>
-                                                        </li>
-                                                        <li role="presentation" class="divider"></li>
-                                                    @endif
-                                                    <li>
-                                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                            Déconnexion
-                                                        </a>
-                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                aria-expanded="false"><i class="fa fa-user"></i> {{"Bonjour "}}{{ Auth::user()->name }}
+                                                <i class="fa fa-caret-down"></i></a>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        @if(Auth::check())
+                                                            @if(Auth::user()->isAdmin())
+                                                                <li>
+                                                                    <a href="{{ url('admin') }}"><i class="fa fa-tachometer"></i> Panel d administration</a>
+                                                                </li>
+                                                                <li role="presentation" class="divider"></li>
+                                                            @endif
+                                                                <li>
+                                                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                                        Déconnexion
+                                                                    </a>
+                                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                             {{ csrf_field() }}
                                                         </form>
                                                     </li>

@@ -23,7 +23,7 @@
               <td>{{$idea['title']}}</td>
               <td>{{$idea['creator']}}</td>
               <td>{{$idea['description']}}</td>  
-              @if(Auth::check() && (Auth::user()->role==4 || Auth::user()->role==3));
+              @if(Auth::check() && (Auth::user()->isAdmin()) || Auth::user()->isBDE()));
                 <td><a href="{{action('IdeaController@edit', $idea['id'])}}" class="btn btn-warning">Edit</a></td>
                 <td>
                   <form action="{{action('IdeaController@destroy', $idea['id'])}}" method="post">
