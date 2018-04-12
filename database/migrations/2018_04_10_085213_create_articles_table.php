@@ -17,9 +17,9 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->varchar('image');
+            $table->string('image');
             $table->float('price');
-            $table->sold('int');
+            $table->integer('sold')->default(0);
             $table->timestamps();
         });
     }
@@ -34,3 +34,4 @@ class CreateArticlesTable extends Migration
         Schema::dropIfExists('articles');
     }
 }
+ 
