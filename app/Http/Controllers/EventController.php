@@ -40,10 +40,10 @@ class EventController extends Controller
         return view('events.index',compact('events'));
     }
 
-    public function show()
+    public function show($id)
     {
-        $events=Event::all();
-        return view('events.show',compact('events'));
+        $event=Event::find($id);
+        return view('events.show',compact('event'));
     }
 
     public function edit($id)
