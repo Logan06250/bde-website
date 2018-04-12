@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Idea;
+use App\Http\Resources\Idea as IdeaResource;
 
 class IdeaController extends Controller
 {
@@ -53,6 +54,8 @@ class IdeaController extends Controller
     {
         //
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

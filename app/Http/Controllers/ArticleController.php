@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Http\Resources\Article as ArticleResource;
 
 class ArticleController extends Controller
 {
@@ -65,7 +66,6 @@ class ArticleController extends Controller
         $article=Article::find($id);
         return view('articles.show', compact('article'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *

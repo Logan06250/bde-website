@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\Api;
+use App\Http\Controllers\Controller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +30,16 @@ Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
 Route::resource('articles', 'ArticleController');
 Route::resource('events','EventController');
+
+
+
+Route::get('/api/events/{id}', 'Api\EventController@show');
+Route::get('/api/articles/{id}', 'Api\ArticleController@show');
+Route::get('/api/ideas/{id}', 'Api\IdeaController@show');
+
+Route::get('/api/ideas', 'Api\IdeaController@showAll');
+Route::get('/api/events', 'Api\EventController@showAll');
+Route::get('/api/articles', 'Api\ArticleController@showAll');
+
+Route::get('/api/{value}', 'Api\ApiController@show');
+

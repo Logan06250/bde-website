@@ -57,12 +57,12 @@
                                                 <i class="fa fa-caret-down"></i></a>
                                                     <ul class="dropdown-menu" role="menu">
                                                         @if(Auth::check())
-                                                            @if(Auth::user()->isAdmin())
+                                                            @//if(Auth::user()->isAdmin()) 
                                                                 <li>
                                                                     <a href="{{ url('admin') }}"><i class="fa fa-tachometer"></i> Panel d administration</a>
                                                                 </li>
                                                                 <li role="presentation" class="divider"></li>
-                                                            @endif
+                                                            @//endif
                                                                 <li>
                                                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                                         Déconnexion
