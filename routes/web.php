@@ -20,18 +20,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('/ideas','IdeaController');
 
-
 Route::get('/admin/admin/{id}', 'AdminController@beAdmin');
 Route::get('/admin/bde/{id}', 'AdminController@beBDE');
 Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
-
-
-
-
-
-
-
-
-
+Route::resource('articles', 'ArticleController');
