@@ -38,7 +38,7 @@ class EventController extends Controller
     
     public function index()
     {
-        $events=Event::all();
+        $events=Event::all();                                   
         $comments=Comment::all();
         return view('events.index',compact('events', 'comments'));
     }

@@ -33,6 +33,7 @@
           <div class="col-md-7 col-md-offset-0">
           <ul class="list-group">
               <label for="Name">Commentaire :</label>
+              <div style="overflow-y:scroll; height:200px"> 
           @foreach($comments as $comment)
             @if($comment['event_id'] == $event['id'])
               <li class="list-group-item">
@@ -42,16 +43,17 @@
               </li>
             @endif
           @endforeach
+          </div>
           <li class="list-group-item">
-            <span class="badge"><button type="submit" class="btn btn-info">Poster le commentaire</button></span>
+            
             <form method="post" action="{{url('comments')}}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="row">
                 <div class="form-group col-md-4">
-                  <input type="textarea" class="form-control" name="content">
+                  <input style="width: 600px"type="textarea" class="form-control" name="content">
                   <input value ="{{$event['id']}}" type="hidden" class="form-control" name="id">
                   <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
-
+                  <button style="margin-top:15px" type="submit" class="btn btn-info">Poster le commentaire</button>
                 </div>
               </div>
             </form>
