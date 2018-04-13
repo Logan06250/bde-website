@@ -17,6 +17,7 @@
      </div>
 
      <!-- Admin space -->
+     @if(Auth::check() && (Auth::user()->isAdmin()) || Auth::user()->isBDE())
      <div class="row">
       <div class="col-sm-6 col-md-12">
         <div class="thumbnail">
@@ -28,6 +29,10 @@
         </div>
       </div>
     </div>
+    @endif
+
+    <!-- Most sold items -->
+
 
     <!-- Display articles -->
     <div class="row">
@@ -45,6 +50,7 @@
                 <br/>
                 <br/>
                 <p> <a href="#" class="btn btn-primary" role="button">Ajouter au panier</a> 
+                  @if(Auth::check() && (Auth::user()->isAdmin()) || Auth::user()->isBDE())
                   <hr/>
                   <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a>
                   <br/>
@@ -54,6 +60,7 @@
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-danger" type="submit">Supprimer</button>
                   </form> </p>
+                  @endif
                 
              </div>
             </div>
