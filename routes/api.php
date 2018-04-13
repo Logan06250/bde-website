@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Api;
+use App\Http\Controllers\api\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/products/{id}', 'ProductController@show');
+

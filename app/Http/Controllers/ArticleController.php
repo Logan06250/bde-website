@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Http\Resources\Article as ArticleResource;
 
 class ArticleController extends Controller
 {
@@ -64,7 +65,6 @@ class ArticleController extends Controller
     {
     //
     }
-
     /**
      * Show the form for editing the specified resource.
      *

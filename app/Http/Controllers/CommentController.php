@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Idea;
-use App\Http\Resources\Idea as IdeaResource;
+use App\Event;
+use App\Comment;
 
-class IdeaController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,17 +15,17 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        $ideas=Idea::all();
-        return view('ideas.index',compact('ideas'));
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('ideas.create');
+        
     }
 
     /**
@@ -36,12 +36,14 @@ class IdeaController extends Controller
      */
     public function store(Request $request)
     {
-        $idea= new Idea();
-        $idea->creator=$request->get('creator');
-        $idea->title=$request->get('title');
-        $idea->description=$request->get('description');
-        $idea->save();
-        return redirect('ideas')->with('success', 'Information has been added');
+
+        $comment= new Comment();
+        $comment->content=$request->get('content');
+        $comment->event_id=$request->get('id');
+        $comment->userName=$request->get('userName');
+        $comment->save();
+        
+        return redirect('events')->with('success', 'Votre commentaire a était bien pris en compte');
     }
 
     /**
@@ -55,8 +57,6 @@ class IdeaController extends Controller
         //
     }
 
-
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -65,8 +65,7 @@ class IdeaController extends Controller
      */
     public function edit($id)
     {
-        $idea = Idea::find($id);
-        return view('ideas.update',compact('idea','id'));
+        //
     }
 
     /**
@@ -78,12 +77,7 @@ class IdeaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $idea = Idea::find($id);
-        $idea->creator=$request->get('creator');
-        $idea->title=$request->get('title');
-        $idea->description=$request->get('description');
-        $idea->save();
-        return redirect('ideas');
+        //
     }
 
     /**
@@ -94,8 +88,6 @@ class IdeaController extends Controller
      */
     public function destroy($id)
     {
-        $idea = idea::find($id);
-        $idea->delete();
-        return redirect('ideas')->with('sucess','Information supprimer');
+        //
     }
 }
