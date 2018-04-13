@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
-use App\Comment;
+use App\Registered;
 
-class CommentController extends Controller
+class RegisteredController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,14 +36,12 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-
-        $comment= new Comment();
-        $comment->content=$request->get('content');
-        $comment->event_id=$request->get('event_id');
-        $comment->userName=$request->get('userName');
-        $comment->save();
+        $registered= new Registered();
+        $registered->event_id=$request->get('event_id');
+        $registered->user_id=$request->get('user_id');
+        $registered->save();
         
-        return redirect('events')->with('success', 'Votre commentaire a été bien pris en compte');
+        return redirect('events')->with('success', 'Votre inscription a été bien pris en compte');
     }
 
     /**
@@ -80,6 +78,7 @@ class CommentController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -88,6 +87,9 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $registered = Registered::find($id);
+        $registered->delete();
+        return redirect('events')->with('success','Vous venez de vous désinscrire');
     }
+
 }

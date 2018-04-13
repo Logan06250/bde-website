@@ -30,11 +30,15 @@ Route::get('/admin/bde/{id}', 'AdminController@beBDE');
 Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
+
 Route::resource('articles', 'ArticleController');
 
 Route::resource('events','EventController');
 
 Route::resource('comments','CommentController');
+
+Route::resource('registereds','RegisteredController');
+
 
 Route::get('/api/events/{id}', 'Api\EventController@show');
 Route::get('/api/articles/{id}', 'Api\ArticleController@show');

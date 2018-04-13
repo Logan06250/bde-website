@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Comment;
+use App\Registered;
 use App\Http\Resources\Event as EventResource;
 
 class EventController extends Controller
@@ -40,7 +41,8 @@ class EventController extends Controller
     {
         $events=Event::all();                                   
         $comments=Comment::all();
-        return view('events.index',compact('events', 'comments'));
+        $registereds=Registered::all();
+        return view('events.index',compact('events', 'comments', 'registereds'));
     }
 
     public function show($id)
