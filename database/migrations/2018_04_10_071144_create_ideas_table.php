@@ -16,7 +16,7 @@ class CreateIdeasTable extends Migration
         Schema::create('ideas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('creator');
             $table->boolean('visibility')->default(true);
             $table->timestamps();

@@ -26,7 +26,7 @@
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
               <label for="Description">Description :</label>
-              <input type="text" class="form-control" name="description">
+              <textarea type="text" class="form-control" name="description" style="height=300px;"></textarea>
             </div>
           </div>
           <div class="row">
