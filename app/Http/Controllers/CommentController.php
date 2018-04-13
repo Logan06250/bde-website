@@ -39,11 +39,11 @@ class CommentController extends Controller
 
         $comment= new Comment();
         $comment->content=$request->get('content');
-        $comment->event_id=$request->get('id');
+        $comment->event_id=$request->get('event_id');
         $comment->userName=$request->get('userName');
         $comment->save();
         
-        return redirect('events')->with('success', 'Votre commentaire a était bien pris en compte');
+        return redirect('events')->with('success', 'Votre commentaire a été bien pris en compte');
     }
 
     /**
