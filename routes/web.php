@@ -29,8 +29,10 @@ Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
 Route::resource('articles', 'ArticleController');
+
 Route::resource('events','EventController');
 
+Route::resource('comments','CommentController');
 
 
 Route::get('/api/events/{id}', 'Api\EventController@show');
