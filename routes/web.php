@@ -34,6 +34,9 @@ Route::get('/notifications/{id}', 'NotificationController@destroy');
 
 Route::get('/idea/transform/{id}', 'IdeaController@ideaEvent');
 
+Route::get('/idea/private/{id}', 'IdeaController@private');
+Route::get('/idea/unprivate/{id}', 'IdeaController@unPrivate');
+
 Route::resource('articles', 'ArticleController');
 
 Route::resource('events','EventController');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Idea;
 use App\Vote;
+use App\User;
 use App\Notification;
 use App\Http\Resources\Idea as IdeaResource;
 
@@ -115,5 +116,37 @@ class IdeaController extends Controller
 
         $idea->delete();
         return view('ideas.transform',compact('idea'));
+    }
+
+    public function private($id)
+    {
+        $idea = Idea::find($id);
+        $idea->visibility=false;
+        $idea->save();
+
+
+        $users = User::all();
+        foreach($users as $user){
+            if($user->role==3){
+                $notification = new Notification();
+                $notification->user_id = $user->id;
+                $notification->content = "Une idée vient d'etre signalée";
+                $notification->save();
+            }
+        }
+        $notification = new Notification();
+        $notification->user_id = $idea->user_id;
+        $notification->content = "Votre idée vient d'etre signalée";
+        $notification->save();
+
+        return redirect('ideas')->with('sucess','Idée passé en mode privé');
+    }
+
+    public function unPrivate($id)
+    {
+        $idea = Idea::find($id);
+        $idea->visibility=true;
+        $idea->save();
+        return redirect('ideas')->with('sucess','Idée passé en mode publique');
     }
 }
