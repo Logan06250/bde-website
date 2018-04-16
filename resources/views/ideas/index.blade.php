@@ -14,7 +14,7 @@
           <th>Createur</th>
           <th>Description</th>
           <th>Nb vote</th>
-          <th colspan="3">Action</th>
+          <th colspan="4">Action</th>
         </tr>
       </thead>
         <tbody>  
@@ -35,8 +35,9 @@
               {{$nbVote}}
               </td>
               @if(Auth::check())
-              @if(Auth::user()->isAdmin()) || Auth::user()->isBDE())
+              
               <td>
+             
                 {{$voted=false}}
                 @foreach($votes as $vote)
                   @if($vote['idea_id'] == $idea['id'] && $vote['user_id'] == Auth::user()->id)
@@ -56,9 +57,12 @@
                       <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
                       <button TYPE="submit" class="btn btn-info">Voter</button>
                     </form>
+                    
                     @endif
                   @endif
-              </td>
+                  </td>
+                  @if(Auth::user()->isAdmin() || Auth::user()->isBDE())
+              
                 <td><a href="{{action('IdeaController@edit', $idea['id'])}}" class="btn btn-warning">Edit</a></td>
                 <td>
                   <form action="{{action('IdeaController@destroy', $idea['id'])}}" method="post">
@@ -66,6 +70,9 @@
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-danger" type="submit">Delete</button>
                   </form>
+                </td>
+                <td>
+                <a href="{{action('IdeaController@ideaEvent', $idea['id'])}}" class="btn btn-primary">Event</a>
                 </td>
               @endif
              
