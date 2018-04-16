@@ -12,6 +12,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
+@php
+if (Auth::check()){
+$notifications = App\Notification::where('user_id', '=' , Auth::user()->id);
+}
+@endphp
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -40,9 +47,21 @@
                                     <li class="{{ (Request::is('ideas') ? 'active' : '') }}">
                                         <a href="{{ url('ideas') }}">Boite à idées</a>
                                     </li>
-                                    <li class="{{ (Request::is('contact') ? 'active' : '') }}">
-                                        <a href="{{ url('contact') }}">Contacte ton BDE !</a>
+
+
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notifications <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                        @if (Auth::check()){
+                                            @foreach($notifications as $notification)
+                                                <li><a></a>$notification['content']test</a></li>
+                                            @endforeach 
+                                        @endif
+
+                                        </ul>
                                     </li>
+                                    
+
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     @if (Auth::guest())

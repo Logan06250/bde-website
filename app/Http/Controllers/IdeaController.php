@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Idea;
 use App\Vote;
+use App\Notification;
 use App\Http\Resources\Idea as IdeaResource;
 
 class IdeaController extends Controller
@@ -39,6 +40,7 @@ class IdeaController extends Controller
     public function store(Request $request)
     {
         $idea= new Idea();
+        $idea->user_id=$request->get('user_id');
         $idea->creator=$request->get('creator');
         $idea->title=$request->get('title');
         $idea->description=$request->get('description');
@@ -94,13 +96,23 @@ class IdeaController extends Controller
      */
     public function destroy($id)
     {
-        $idea = idea::find($id);
+        $idea = Idea::find($id);
         $idea->delete();
         return redirect('ideas')->with('sucess','Information supprimer');
     }
+
+
+
+
     public function ideaEvent($id)
     {
         $idea = Idea::find($id);
+        
+        $notification = new Notification();
+        $notification->user_id = $idea->user_id;
+        $notification->content = "Votre idée a été validée et un évènement a été créé ! :)";
+        $notification->save();
+
         $idea->delete();
         return view('ideas.transform',compact('idea'));
     }
