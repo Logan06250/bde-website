@@ -74,28 +74,6 @@
                 <a href="{{action('IdeaController@ideaEvent', $idea['id'])}}" class="btn btn-primary">Event</a>
                 </td>
               @endif
-              <td>
-              {{$voted=false}}
-                    @foreach($votes as $vote)
-                      @if($vote['idea_id'] == $idea['id'] && $vote['user_id'] == Auth::user()->id)
-                      <form  action="{{action('VoteController@destroy', $vote['id'])}}" method="post">
-                        {{ csrf_field() }}
-                          <input name="_method" type="hidden" value="DELETE">
-                          <button TYPE="submit" class="btn btn-danger">Dévoter</button>
-                        </form>
-                        <!--{{$voted=true}}-->
-                        @break 
-                      @endif
-                    @endforeach
-                    @if($voted==false)
-                      <form method="post" action="{{url('votes')}}" enctype="multipart/form-data">
-                      {{ csrf_field() }}
-                          <input value ="{{$idea['id']}}" type="hidden" class="form-control" name="idea_id">
-                          <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                          <button TYPE="submit" class="btn btn-info">Voter</button>
-                      </form>
-                    @endif
-              </td>
             </tr>
           @endforeach
         </tbody>
