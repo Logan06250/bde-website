@@ -25,7 +25,6 @@
               <td>{{$idea['creator']}}</td>
               <td>{{$idea['description']}}</td>  
               <td>
-              
               <!-- {{$nbVote = 0}} -->
               @foreach($votes as $vote)
                 @if($vote['idea_id'] == $idea['id'])
@@ -45,7 +44,6 @@
                 </td>
               @endif
               <td>
-
               {{$voted=false}}
                     @foreach($votes as $vote)
                       @if($vote['idea_id'] == $idea['id'] && $vote['user_id'] == Auth::user()->id)
@@ -59,18 +57,18 @@
                       @endif
                     @endforeach
                     @if($voted==false)
-                    <form method="post" action="{{url('votes')}}" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                        <input value ="{{$idea['id']}}" type="hidden" class="form-control" name="idea_id">
-                        <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                        <button TYPE="submit" class="btn btn-info">Voter</button>
-                    </form>
+                      <form method="post" action="{{url('votes')}}" enctype="multipart/form-data">
+                      {{ csrf_field() }}
+                          <input value ="{{$idea['id']}}" type="hidden" class="form-control" name="idea_id">
+                          <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
+                          <button TYPE="submit" class="btn btn-info">Voter</button>
+                      </form>
                     @endif
               </td>
             </tr>
           @endforeach
         </tbody>
     </table>
-      <a href="{{action('IdeaController@create')}}" class="btn btn-primary">Create</a>
+      <a href="{{action('IdeaController@create')}}" class="btn btn-primary">Proposer une idée</a>
     </div>
   @endsection
