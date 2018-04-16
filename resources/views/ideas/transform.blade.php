@@ -48,7 +48,7 @@
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4" style="margin-top:60px">
-          <input  value="{{$idea->id}}" type="hidden" id="id" name="id">   
+          <input  value="{{$idea->id}}" type="hidden" name="id">  
             <button type="submit" class="btn btn-success">Submit</button>
           </div>
         </div>

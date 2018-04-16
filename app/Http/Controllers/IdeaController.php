@@ -96,27 +96,12 @@ class IdeaController extends Controller
     {
         $idea = idea::find($id);
         $idea->delete();
-        //return redirect('ideas')->with('sucess','Information supprimer');
+        return redirect('ideas')->with('sucess','Information supprimer');
     }
     public function ideaEvent($id)
     {
         $idea = Idea::find($id);
+        $idea->delete();
         return view('ideas.transform',compact('idea'));
-    }
-    public function transform(Request $request)
-    {
-        $idea = $request;
-
-        $event= new EventController.Event();
-        $event->name=$request->get('name');
-        $event->description=$request->get('description');
-        $date=date_create($request->get('date'));
-        $format = date_format($date,"Y-m-d");
-        $event->date = strtotime($format);
-        $event->visibility=$request->get('visibility');
-        $event->image=$name;
-        $event->save();
-        $idea->destroy($idea->get('id'));
-        return redirect('event.transform',$event);
     }
 }
