@@ -17,7 +17,7 @@
         $date=date('Y-m-d', $event['date']);
         @endphp
         <div class="panel-heading">
-            <h2 class="panel-title">{{$event['name']}}</h2>
+            <h1 style="font-size:40px" class="panel-title">{{$event['name']}}</h1>
         </div>
         <div class="panel-body">
             <div class="container">
@@ -51,13 +51,19 @@
 
                 </div>
           <div class="col-md-7 col-md-offset-0">
+          <div class="panel panel-default">
+          <div class="panel-heading">
           <ul class="list-group">
-              <label for="Name">Commentaire :</label>
+              <label for="Name" class="panel-title">Commentaire :</label>
+              </div>
+        <div class="panel-body">
               <div style="overflow-y:scroll; height:200px"> 
           @foreach($comments as $comment)
             @if($comment['event_id'] == $event['id'])
               <li class="list-group-item">
+                
                 <span class="badge">{{$comment['userName']}}</span>
+                <span class="badge"><a href="{{action('CommentController@edit', $comment['id'])}}" >Modérer</a></span>
                 {{$comment['content']}}
                 </br>
               </li>
@@ -79,6 +85,8 @@
             </form>
           </li>
         </ul>
+        </div>
+        </div>
         </div>
         </div>
         <table>
