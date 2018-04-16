@@ -30,6 +30,8 @@ Route::get('/admin/bde/{id}', 'AdminController@beBDE');
 Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
+Route::get('/notifications/{id}', 'NotificationController@destroy');
+
 Route::get('/idea/transform/{id}', 'IdeaController@ideaEvent');
 
 Route::resource('articles', 'ArticleController');

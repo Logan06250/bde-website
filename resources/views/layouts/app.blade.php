@@ -12,13 +12,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-
-@php
-if (Auth::check()){
-$notifications = App\Notification::where('user_id', '=' , Auth::user()->id);
-}
-@endphp
-
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -27,13 +20,6 @@ $notifications = App\Notification::where('user_id', '=' , Auth::user()->id);
                     <nav class="navbar navbar-default navbar-inverse">
                         <div class="container">
                             <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                        data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Toggle Navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
                                 <a class="navbar-brand" href="{{ url('/') }}">BDE</a>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,21 +33,21 @@ $notifications = App\Notification::where('user_id', '=' , Auth::user()->id);
                                     <li class="{{ (Request::is('ideas') ? 'active' : '') }}">
                                         <a href="{{ url('ideas') }}">Boite à idées</a>
                                     </li>
-
-
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notifications <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
-                                        @if (Auth::check()){
-                                            @foreach($notifications as $notification)
-                                                <li><a></a>$notification['content']test</a></li>
-                                            @endforeach 
-                                        @endif
-
+                                            @if (Auth::check())
+                                                <!--{{$notifications = App\Notification::all()}}-->
+                                                @foreach($notifications as $notification)
+                                                   @if($notification['user_id'] == Auth::user()->id)
+                                                        <a href="{{action('NotificationController@destroy', $notification['id'])}}" class="glyphicon glyphicon-remove"></a>
+                                                        <li>{{$notification['content']}}</li>
+                                                        <li role="presentation" class="divider"></li>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </li>
-                                    
-
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     @if (Auth::guest())

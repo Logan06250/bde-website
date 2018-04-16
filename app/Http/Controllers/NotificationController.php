@@ -85,5 +85,7 @@ class NotificationController extends Controller
     {
         $notification = Notification::find($id);
         $notification->delete();
+
+        return redirect('/');
     }
 }
