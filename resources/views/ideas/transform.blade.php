@@ -1,4 +1,4 @@
-return redirect('ideas')->with('sucess','Information supprimer');<!-- create.blade.php -->
+<!-- create.blade.php -->
 
 @extends('layouts.app')
 
@@ -11,14 +11,14 @@ return redirect('ideas')->with('sucess','Information supprimer');<!-- create.bla
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="Name">Name:</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" value="{{$idea->name}}">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
             <div class="form-group col-md-4">
               <label for="Description">Description:</label>
-              <input type="text" class="form-control" name="description">
+              <input type="text" class="form-control" name="description" value="{{$idea->description}}">
             </div>
           </div>
         <div class="row">
@@ -32,6 +32,7 @@ return redirect('ideas')->with('sucess','Information supprimer');<!-- create.bla
           <div class="form-group col-md-4">
             <strong>Date (YYYY-MM-DD) : </strong>  
             <input class="date form-control"  type="text" id="datepicker" name="date">   
+
          </div>
         </div>
          <div class="row">
@@ -47,6 +48,7 @@ return redirect('ideas')->with('sucess','Information supprimer');<!-- create.bla
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4" style="margin-top:60px">
+          <input  value="{{$idea->id}}" type="hidden" id="id" name="id">   
             <button type="submit" class="btn btn-success">Submit</button>
           </div>
         </div>
