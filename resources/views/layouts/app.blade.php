@@ -20,13 +20,6 @@
                     <nav class="navbar navbar-default navbar-inverse">
                         <div class="container">
                             <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                        data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Toggle Navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
                                 <a class="navbar-brand" href="{{ url('/') }}">BDE</a>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -40,8 +33,20 @@
                                     <li class="{{ (Request::is('ideas') ? 'active' : '') }}">
                                         <a href="{{ url('ideas') }}">Boite à idées</a>
                                     </li>
-                                    <li class="{{ (Request::is('contact') ? 'active' : '') }}">
-                                        <a href="{{ url('contact') }}">Contacte ton BDE !</a>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Notifications <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            @if (Auth::check())
+                                                <!--{{$notifications = App\Notification::all()}}-->
+                                                @foreach($notifications as $notification)
+                                                   @if($notification['user_id'] == Auth::user()->id)
+                                                        <a href="{{action('NotificationController@destroy', $notification['id'])}}" class="glyphicon glyphicon-remove"></a>
+                                                        <li>{{$notification['content']}}</li>
+                                                        <li role="presentation" class="divider"></li>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </ul>
                                     </li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
