@@ -40,7 +40,7 @@
                                                 <!--{{$notifications = App\Notification::all()}}-->
                                                 @foreach($notifications as $notification)
                                                    @if($notification['user_id'] == Auth::user()->id)
-                                                        <a href="{{action('NotificationController@destroy', $notification['id'])}}" class="glyphicon glyphicon-remove"></a>
+                                                        <a href="{{action('NotificationController@destroy', $notification['id'])}}" class="btn btn-danger">X</a>
                                                         <li>{{$notification['content']}}</li>
                                                         <li role="presentation" class="divider"></li>
                                                     @endif

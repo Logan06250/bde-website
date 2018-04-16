@@ -20,10 +20,20 @@
         <tbody>  
           @foreach($ideas as $idea)
             <tr>
+            @if($idea['visibility'])
               <td>{{$idea['id']}}</td>
               <td>{{$idea['title']}}</td>
               <td>{{$idea['creator']}}</td>
               <td>{{$idea['description']}}</td>  
+            @elseif($idea['visibility'] == false && (Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isBDE())))
+              <td>{{$idea['id']}}</td>
+              <td>{{$idea['title']}}</td>
+              <td>{{$idea['creator']}}</td>
+              <td>{{$idea['description']}}</td> 
+            @else
+            @break
+            @endif
+
               <td>
               <!-- {{$nbVote = 0}} -->
               @foreach($votes as $vote)
@@ -61,18 +71,22 @@
                   @endif
                   </td>
                   @if(Auth::user()->isAdmin() || Auth::user()->isBDE())
-              
-                <td><a href="{{action('IdeaController@edit', $idea['id'])}}" class="btn btn-warning">Edit</a></td>
-                <td>
-                  <form action="{{action('IdeaController@destroy', $idea['id'])}}" method="post">
-                    {{ csrf_field() }}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                  </form>
-                </td>
-                <td>
-                <a href="{{action('IdeaController@ideaEvent', $idea['id'])}}" class="btn btn-primary">Event</a>
-                </td>
+                    <td><a href="{{action('IdeaController@edit', $idea['id'])}}" class="btn btn-warning">Edit</a></td>
+                    @if($idea['visibility'])
+                      <td><a href="{{action('IdeaController@private', $idea['id'])}}" class="btn btn-warning">Signaler</a></td>
+                    @else
+                      <td><a href="{{action('IdeaController@unPrivate', $idea['id'])}}" class="btn btn-warning">Remettre</a></td>
+                    @endif
+                    <td>
+                      <form action="{{action('IdeaController@destroy', $idea['id'])}}" method="post">
+                        {{ csrf_field() }}
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                      </form>
+                    </td>
+                    <td>
+                    <a href="{{action('IdeaController@ideaEvent', $idea['id'])}}" class="btn btn-primary">Event</a>
+                    </td>
               @endif
             </tr>
           @endforeach
