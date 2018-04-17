@@ -47,6 +47,8 @@ Route::resource('registereds','RegisteredController');
 
 Route::resource('votes','VoteController');
 
+Route::resource('likes','LikeController');
+
 Route::get('/api/events/{id}', 'Api\EventController@show');
 Route::get('/api/articles/{id}', 'Api\ArticleController@show');
 Route::get('/api/ideas/{id}', 'Api\IdeaController@show');
