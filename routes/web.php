@@ -35,6 +35,9 @@ Route::get('/notifications/{id}', 'NotificationController@destroy');
 Route::get('/ideas/transform/{id}', 'IdeaController@ideaEvent');
 Route::get('/ideas/view/{id}', 'IdeaController@view');
 
+Route::get('/idea/private/{id}', 'IdeaController@private');
+Route::get('/idea/unprivate/{id}', 'IdeaController@unPrivate');
+
 Route::resource('articles', 'ArticleController');
 
 Route::resource('events','EventController');
@@ -45,6 +48,7 @@ Route::resource('registereds','RegisteredController');
 
 Route::resource('votes','VoteController');
 
+Route::resource('likes','LikeController');
 
 Route::get('/api/events/{id}', 'Api\EventController@show');
 Route::get('/api/articles/{id}', 'Api\ArticleController@show');
