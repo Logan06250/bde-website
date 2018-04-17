@@ -27,7 +27,13 @@ Route::get('/admin/bde/{id}', 'AdminController@beBDE');
 Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
+<<<<<<< HEAD
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/articles/cart/{id}', 'ArticleController@addToCart');
 
+=======
+Route::resource('articles', 'ArticleController');
+Route::resource('events','EventController');
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 5098da41f9ff9fb43dff55ab73874d7df382357a
