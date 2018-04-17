@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Comment;
+use App\Registered;
+use App\Like;
+use App\Http\Resources\Event as EventResource;
 
 class EventController extends Controller
 {
@@ -36,8 +40,11 @@ class EventController extends Controller
     
     public function index()
     {
-        $events=Event::all();
-        return view('events.index',compact('events'));
+        $events=Event::all();                                   
+        $comments=Comment::all();
+        $registereds=Registered::all();
+        $likes=Like::all();
+        return view('events.index',compact('events', 'comments', 'registereds','likes'));
     }
 
     public function show($id)
@@ -45,6 +52,7 @@ class EventController extends Controller
         $event=Event::find($id);
         return view('events.show',compact('event'));
     }
+
 
     public function edit($id)
     {

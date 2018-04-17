@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\Api;
+use App\Http\Controllers\Controller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,10 +30,34 @@ Route::get('/admin/bde/{id}', 'AdminController@beBDE');
 Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/articles/cart/{id}', 'ArticleController@addToCart');
+Route::get('/notifications/{id}', 'NotificationController@destroy');
+
+Route::get('/ideas/transform/{id}', 'IdeaController@ideaEvent');
+Route::get('/ideas/view/{id}', 'IdeaController@view');
+
+Route::get('/idea/private/{id}', 'IdeaController@private');
+Route::get('/idea/unprivate/{id}', 'IdeaController@unPrivate');
 
 Route::resource('articles', 'ArticleController');
+
 Route::resource('events','EventController');
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('comments','CommentController');
+
+Route::resource('registereds','RegisteredController');
+
+Route::resource('votes','VoteController');
+
+Route::resource('likes','LikeController');
+
+Route::get('/api/events/{id}', 'Api\EventController@show');
+Route::get('/api/articles/{id}', 'Api\ArticleController@show');
+Route::get('/api/ideas/{id}', 'Api\IdeaController@show');
+
+Route::get('/api/ideas', 'Api\IdeaController@showAll');
+Route::get('/api/events', 'Api\EventController@showAll');
+Route::get('/api/articles', 'Api\ArticleController@showAll');
+
+Route::get('/api/{value}', 'Api\ApiController@show');
+

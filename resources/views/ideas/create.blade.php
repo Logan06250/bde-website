@@ -26,12 +26,13 @@
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
               <label for="Description">Description :</label>
-              <input type="text" class="form-control" name="description">
+              <textarea type="text" class="form-control" name="description" style="height=300px;"></textarea>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4" style="margin-top:60px">
+              <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
               <button type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>

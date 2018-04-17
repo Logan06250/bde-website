@@ -1,4 +1,4 @@
-<!-- create.blade.php -->
+return redirect('ideas')->with('sucess','Information supprimer');<!-- create.blade.php -->
 
 @extends('layouts.app')
 
