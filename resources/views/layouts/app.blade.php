@@ -43,7 +43,11 @@
                                                 @endif
                                             @endforeach
                                         @endif
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fas fa-bell"></i> Notifications <span class="badge">{{$nbNotif}}</span></a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fas fa-bell"></i> Notifications <span class="badge">
+                                        @if (Auth::check())    
+                                            {{$nbNotif}}
+                                        @endif
+                                        </span></a>
                                         <ul class="dropdown-menu">
                                             
                                             @if (Auth::check())
