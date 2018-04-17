@@ -28,3 +28,6 @@ Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/articles/cart/{id}', 'ArticleController@addToCart');
+

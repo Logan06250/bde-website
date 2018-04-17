@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Cookie;
 
 class ArticleController extends Controller
 {
@@ -114,6 +115,38 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->delete();
         return redirect('articles')->with('success','L\'article a bien été supprimer');
+    }
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    //  disgusting code that is not code to think about
+
+    public function addToCart($id)
+
+    {
+        if (Cookie::get('list') !== null){
+
+            $cake = Cookie::get('list');
+
+            $itemList = $cake . "," . $id;
+
+        }
+
+        else {
+
+            $itemList = $id;
+
+        }
+
+        Cookie::queue(Cookie::make('list', $itemList, 5));
+
+        return redirect('articles')->with('success', $itemList);
+       
     }
 
 }
