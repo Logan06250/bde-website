@@ -71,7 +71,11 @@ class IdeaController extends Controller
         $idea = Idea::find($id);
         return view('ideas.update',compact('idea','id'));
     }
-
+    public function view($id){
+        $idea = Idea::find($id);
+        $votes=Vote::all();
+        return view('ideas.view',compact('idea','votes'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -101,9 +105,6 @@ class IdeaController extends Controller
         $idea->delete();
         return redirect('ideas')->with('sucess','Information supprimer');
     }
-
-
-
 
     public function ideaEvent($id)
     {

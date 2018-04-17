@@ -32,7 +32,8 @@ Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
 Route::get('/notifications/{id}', 'NotificationController@destroy');
 
-Route::get('/idea/transform/{id}', 'IdeaController@ideaEvent');
+Route::get('/ideas/transform/{id}', 'IdeaController@ideaEvent');
+Route::get('/ideas/view/{id}', 'IdeaController@view');
 
 Route::get('/idea/private/{id}', 'IdeaController@private');
 Route::get('/idea/unprivate/{id}', 'IdeaController@unPrivate');
