@@ -17,7 +17,6 @@
      </div>
 
      <!-- Admin space -->
-     @if(Auth::check() && (Auth::user()->isAdmin()) || Auth::user()->isBDE())
      <div class="row">
       <div class="col-sm-6 col-md-12">
         <div class="thumbnail">
@@ -29,10 +28,6 @@
         </div>
       </div>
     </div>
-    @endif
-
-    <!-- Most sold items -->
-
 
     <!-- Display articles -->
     <div class="row">
