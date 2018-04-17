@@ -31,9 +31,8 @@
               <td>{{$idea['creator']}}</td>
               <td>{{$idea['description']}}</td> 
             @else
-            @break
+              @break
             @endif
-
               <td>
               <!-- {{$nbVote = 0}} -->
               @foreach($votes as $vote)
@@ -44,9 +43,7 @@
               {{$nbVote}}
               </td>
               @if(Auth::check())
-              
-              <td>
-             
+                <td>
                 {{$voted=false}}
                 @foreach($votes as $vote)
                   @if($vote['idea_id'] == $idea['id'] && $vote['user_id'] == Auth::user()->id)
@@ -66,7 +63,6 @@
                       <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
                       <button TYPE="submit" class="btn btn-info">Voter</button>
                     </form>
-                    
                     @endif
                   @endif
                   </td>
