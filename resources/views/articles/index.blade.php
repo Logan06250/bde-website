@@ -50,12 +50,7 @@
                 <strong>{{$article['price']}} €</strong>
                 <br/>
                 <br/>
-<<<<<<< HEAD
                 <p> <a href="{{action('ArticleController@addToCart', $article['id'])}}" class="btn btn-primary" role="button">Ajouter au panier</a> 
-=======
-                <p> <a href="#" class="btn btn-primary" role="button">Ajouter au panier</a> 
-                  @if(Auth::check() && (Auth::user()->isAdmin()) || Auth::user()->isBDE())
->>>>>>> 5098da41f9ff9fb43dff55ab73874d7df382357a
                   <hr/>
 
                   <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a>
@@ -66,12 +61,7 @@
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-danger" type="submit">Supprimer</button>
                   </form> </p>
-<<<<<<< HEAD
                   
-=======
-                  @endif
-                
->>>>>>> 5098da41f9ff9fb43dff55ab73874d7df382357a
              </div>
             </div>
           </div>
