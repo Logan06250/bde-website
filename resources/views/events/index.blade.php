@@ -43,7 +43,7 @@
                   {{ csrf_field() }}
                   <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
                   <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                  <button TYPE="submit" class="btn btn-info">Sinscrire</button>
+                  <button TYPE="submit" class="btn btn-info">Sinscrire à l'évènement'</button>
                 </form>
               @endif
               <!-- {{$nbVote = 0}} -->
@@ -52,7 +52,7 @@
                   <!-- {{$nbVote++}} -->
                 @endif
               @endforeach
-              {{$nbVote}}
+              Likes : {{$nbVote}}
               @if(Auth::check())
                 {{$voted=false}}
                 @foreach($likes as $like)
@@ -60,7 +60,7 @@
                     <form  action="{{action('LikeController@destroy', $like['id'])}}" method="post">
                       {{ csrf_field() }}
                       <input name="_method" type="hidden" value="DELETE">
-                      <button TYPE="submit" class="btn btn-info btn-sm">délike</button>
+                      <button TYPE="submit"><i class="fas fa-thumbs-down"></i></button>
                     </form>
                     <!--{{$voted=true}}-->
                     @break 
@@ -71,7 +71,7 @@
                     {{ csrf_field() }}
                     <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
                     <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                    <button TYPE="submit" class="btn btn-info btn-sm">like</button>
+                    <button TYPE="submit"><i class="fas fa-thumbs-up"></i></button>
                   </form>
                 @endif
               @endif
@@ -128,6 +128,6 @@
           </div>
         </div>
       </div>
-    </div>
   @endforeach
+  </div>
 @endsection               
