@@ -122,12 +122,12 @@
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-danger" type="submit">Delete</button>
                   </form>
-              </td>  
-            </tr>
-          </table>
+                </td>  
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   @endforeach
-</tbody>
 @endsection               
