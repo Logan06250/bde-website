@@ -10,22 +10,37 @@
                 <thead>
                     <tr>
                         <th>Article</th>
-                        <th>Prix</th>
+                        <th>Prix unitaire</th>
+                        <th>Quantité </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($items as $item)
+
+                @foreach ($itemsKeys as $itemKey)
                     <tr>
-                        @foreach($articles as $article)
-                            @if($article['id'] == $item)
-                                <td>{{$article['name']}}</td>
-                                <td>{{$article['price']}}</td>
-                            @endif
-                        @endforeach           
+                    @foreach ($articles as $article)
+
+                        @if($article['id'] == $itemKey)
+
+                            <td>{{$article['name']}}</td>
+                            <td>{{$article['price']}}€</td>
+                            <td>{{$items[$article['id']]}}</td>
+                            
+                      
+                        @endif
+                        
+                    @endforeach 
+
                     </tr>
-                    @endforeach  
+
+                @endforeach
+
                 </tbody>
             </table>
+
+
+            <a href="" class="btn btn-success" role="button">Un bouton pour valider le panier</a>                 
+
         </div>
     </div>
 </div>
