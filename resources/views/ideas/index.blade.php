@@ -23,6 +23,7 @@
                     <!-- {{$nbVote++}} -->
                   @endif
                 @endforeach
+                @if(Auth::check())
             {{$voted=false}}
                         @foreach($votes as $vote)
                             @if($vote['idea_id'] == $idea['id'] && $vote['user_id'] == Auth::user()->id)
@@ -42,10 +43,11 @@
                                 {{ csrf_field() }}
                                 <input value="{{$idea['id']}}" type="hidden" class="form-control" name="idea_id">
                                 <input value="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                                <button  class="btn btn-primary" type="submit" style="text-align:right">Voterr</button>
+                                <button  class="btn btn-primary" type="submit" style="text-align:right">Voter</button>
                                 Vote total : <span class="badge"> {{$nbVote}} </span>
                             </form>
                         @endif
+                      @endif
                         
                         
           </div>

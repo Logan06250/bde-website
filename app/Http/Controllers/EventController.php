@@ -12,6 +12,12 @@ use App\Http\Resources\Event as EventResource;
 class EventController extends Controller
 {
 
+    public function __construct()
+    {
+                $this->middleware('auth');
+    }
+        
+
     public function create()
     {
         return view('events.create');
