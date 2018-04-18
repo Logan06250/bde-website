@@ -37,7 +37,7 @@ class EventController extends Controller
             $date=date_create($request->get('date'));
             $format = date_format($date,"Y-m-d");
             $event->date = strtotime($format);
-            $event->visibility=$request->get('visibility');
+            $event->eventMois=$request->get('eventMois');
             $event->image=$name;
             $event->save();
             
@@ -80,7 +80,7 @@ class EventController extends Controller
         $date=date_create($request->get('date'));
         $format = date_format($date,"Y-m-d");
         $event->date = strtotime($format);
-        $event->visibility=$request->get('visibility');
+        $event->eventMois=$request->get('eventMois');
         $event->save();
         return redirect('events')->with('success','Information has been  updated');
     }
@@ -91,4 +91,34 @@ class EventController extends Controller
         $event->delete();
         return redirect('events')->with('success','Information has been  deleted');
     }
+
+   /* public function private($id)
+    {
+        $event = Event::find($id);
+        $event->visibility=false;
+        $event->save();
+        $users = User::all();
+        foreach($users as $user){
+            if($user->role==3){
+                $notification = new Notification();
+                $notification->user_id = $user->id;
+                $notification->content = "Une idée vient d'etre signalée";
+                $notification->save();
+            }
+        }
+        $notification = new Notification();
+        $notification->user_id = $event->user_id;
+        $notification->content = "Votre idée vient d'etre signalée";
+        $notification->save();
+        return redirect('events')->with('sucess','Idée passé en mode privé');
+    }
+    public function unPrivate($id)
+    {
+        $event = Event::find($id);
+        $event->visibility=true;
+        $event->save();
+        return redirect('events')->with('sucess','Idée passé en mode publique');
+    }*/
+
+
 }

@@ -36,10 +36,10 @@
         <div class="row">
           <div class="col-md-4"></div>
             <div class="form-group col-md-4" style="margin-left:38px">
-                <lable>Event visibility</lable>
-                <select name="visibility">
-                  <option value="1"  @if($event->visibility=="1") selected @endif>1</option>
-                  <option value="0"  @if($event->visibility=="0") selected @endif>0</option>
+                <lable>Evenement du mois</lable>
+                <select name="eventMois">
+                  <option value="1"  @if($event->eventMois=="1") selected @endif>Non</option>
+                  <option value="0"  @if($event->eventMois=="0") selected @endif>Oui</option>
                 </select>
             </div>
         </div>
