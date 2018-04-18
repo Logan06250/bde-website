@@ -25,23 +25,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-
-        if(Auth::check() && (Auth::user()->isAdmin()) || Auth::user()->isBDE()){
-            
-            $users=User::all();
-            return view('admin', compact('users'));
-
-        }
-
-        else {
-        
-            return view('home');
-
-        }
-
-
-        
-        
+        $users=User::all();
+//
+		return view('admin', compact('users'));
     }
 
 

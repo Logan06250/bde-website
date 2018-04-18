@@ -15,7 +15,6 @@
                         </div>
                     @endif
                     <table class="table table-striped">
-
                         <tr>
                             <th>#</th>
                             <th>Nom</th>
@@ -23,7 +22,6 @@
                             <th>Role</th>
                             <th></th>
                         </tr>
-                        
                     @foreach ($users as $user)
                         <tr>
                             <td>
