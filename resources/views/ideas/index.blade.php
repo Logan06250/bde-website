@@ -10,29 +10,27 @@
         <div class="col-md-4">
           <div class="panel panel default" style="maxheight:300px;">
            <div class="panel-heading">
-              <a href="{{action('IdeaController@view',$idea['id'])}}">
-              <h1 class="panel-title">{{$idea['title']}}</h1></a>
-              <p>Vote total
-                <!-- {{$nbVote = 0}} -->
+              <a class="panel-title" href="{{action('IdeaController@view',$idea['id'])}}">
+              <h3>{{$idea['title']}}</h3></a>
+            </div>
+            <hr />
+            <div class="panel-body" >
+              {{$idea['description']}}
+            </div>
+            <!-- {{$nbVote = 0}} -->
                 @foreach($votes as $vote)
                   @if($vote['idea_id'] == $idea['id'])
                     <!-- {{$nbVote++}} -->
                   @endif
                 @endforeach
-                {{$nbVote}}
-              </p>
-            </div>
-            <hr />
-            <div class="panel-body">
-              {{$idea['description']}}
-            </div>
             {{$voted=false}}
                         @foreach($votes as $vote)
                             @if($vote['idea_id'] == $idea['id'] && $vote['user_id'] == Auth::user()->id)
-                                <form method="post" action="{{action('VoteController@destroy', $vote['id'])}}">
+                                <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{action('VoteController@destroy', $vote['id'])}}">
                                     {{ csrf_field() }}
                                     <input name="_method" type="hidden" value="DELETE">
-                                    <button class="btn btn-danger" type="submit">Dévoter</button>
+                                    <button  class="btn btn-danger" type="submit">Dévoter</button>
+                                    Vote total : <span class="badge"> {{$nbVote}} </span>
                                 </form>
                                 <!-- {{$voted=true}} -->
                                 @break
@@ -40,13 +38,16 @@
                         @endforeach
                         @if($voted==false)
                        
-                            <form method="post" action="{{url('votes')}}" enctype="multipart/form-data" >
+                            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{url('votes')}}" enctype="multipart/form-data" >
                                 {{ csrf_field() }}
                                 <input value="{{$idea['id']}}" type="hidden" class="form-control" name="idea_id">
                                 <input value="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                                <button class="btn btn-primary" type="submit" style="text-align:right">Voter</button>
+                                <button  class="btn btn-primary" type="submit" style="text-align:right">Voterr</button>
+                                Vote total : <span class="badge"> {{$nbVote}} </span>
                             </form>
                         @endif
+                        
+                        
           </div>
         </div>
       @endforeach
