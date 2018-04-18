@@ -31,7 +31,7 @@ class EventController extends Controller
             $date=date_create($request->get('date'));
             $format = date_format($date,"Y-m-d");
             $event->date = strtotime($format);
-            $event->visibility=$request->get('visibility');
+            $event->eventMois=$request->get('eventMois');
             $event->image=$name;
             $event->save();
             
@@ -74,7 +74,7 @@ class EventController extends Controller
         $date=date_create($request->get('date'));
         $format = date_format($date,"Y-m-d");
         $event->date = strtotime($format);
-        $event->visibility=$request->get('visibility');
+        $event->eventMois=$request->get('eventMois');
         $event->save();
         return redirect('events')->with('success','Information has been  updated');
     }
