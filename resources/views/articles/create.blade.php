@@ -25,27 +25,8 @@
             </div>
           </div>
 
-        <!-- article image -->
-        <div class="row">
-          <div class="col-md-0"></div>
-          <div class="form-group col-md-4">
-            <label for="Image">Image :</label>
-            <input type="file" name="image">    
-         </div>
-        </div>
-        
-        <!-- article price -->
-        <div class="row">
-          <div class="col-md-0"></div>
-            <div class="form-group col-md-4">
-              <label for="Price">Prix :</label>
-              <input type="text" class="form-control" name="price">
-            </div>
-        </div>
-
-
-        <!-- article category -->
-        <div class="row">
+            <!-- Change article category -->
+            <div class="row">
           <div class="col-md-0"></div>
             <div class="form-group col-md-4">
                 <lable>Catégorie</lable>
@@ -64,7 +45,25 @@
                 <label for="Description">Si aucune catégorie ci-dessus ne correspond à votre atricle vous pouvez l'ajouter ici:</label>
                 <input type="text" class="form-control" name="category">
               </div>
-            </div> 
+            </div>
+
+        <!-- article image -->
+        <div class="row">
+          <div class="col-md-0"></div>
+          <div class="form-group col-md-4">
+            <label for="Image">Image :</label>
+            <input type="file" name="image">    
+         </div>
+        </div>
+        
+        <!-- article price -->
+        <div class="row">
+          <div class="col-md-0"></div>
+            <div class="form-group col-md-4">
+              <label for="Price">Prix :</label>
+              <input type="text" class="form-control" name="price">
+            </div>
+        </div>
         
         <!-- button for add article -->
         <div class="row">

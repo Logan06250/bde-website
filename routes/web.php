@@ -61,3 +61,5 @@ Route::get('/api/articles', 'Api\ArticleController@showAll');
 
 Route::get('/api/{value}', 'Api\ApiController@show');
 
+Route::get('/atricles/cart', 'ArticleController@showCart');
+

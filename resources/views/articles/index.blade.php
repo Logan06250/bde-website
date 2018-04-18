@@ -14,6 +14,7 @@
      <div class="jumbotron">
         <h2>Bienvenue sur la boutique du BDE Mister</h2>
         <p>Tu trouveras ici des trucs bien et moins bien, chers et moins chers...</p>
+        <a href="{{action('ArticleController@showCart')}}" class="btn btn-primary" role="button">Mon panier</a>
      </div>
 
      <!-- Admin space -->

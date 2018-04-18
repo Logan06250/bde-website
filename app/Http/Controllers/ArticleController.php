@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        return view('articles.create'); 
     }
 
     /**
@@ -148,4 +148,38 @@ class ArticleController extends Controller
        
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    //  disgusting code that is not code to think about
+
+    public function showCart()
+    {
+        if (Cookie::get('list') !== null){
+
+            $items = Cookie::get('list');
+
+            $element = (explode(',',$items));
+
+            $caddie = array_count_values($element);
+
+            $basket = join(',',$caddie);
+
+            return view('articles.cart');
+
+        }
+
+        else {
+            
+            return redirect ('articles')->with('success','Votre panier est vide');
+            
+        }
+
+
+        
+    }
 }

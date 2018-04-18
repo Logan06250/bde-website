@@ -2,8 +2,37 @@
 
 @section('content')
 
-<h1> puteuuuu </h1>
+<div class="container">
 
-<p> {{$pute}} </p>
+    <div class="row">
+        <div class="col-sm-0 col-md-12">
+
+            <table class="table table-striped">
+                
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Prix</th>
+                        <th>Quantité </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>test</td>                        
+                    </tr>
+                </tbody>
+
+            </table>
+
+                  
+
+        </div>
+
+    </div>
+
+</div>
 
 @endsection

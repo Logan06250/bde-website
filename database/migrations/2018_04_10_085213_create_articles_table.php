@@ -18,9 +18,9 @@ class CreateArticlesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('image');
-            $table->floatval('price');
+            $table->integer('price');
             $table->integer('sold')->default(0);
-            $table->string('category');
+            $table->string('category')->default(0);
             $table->timestamps();
         });
     }
