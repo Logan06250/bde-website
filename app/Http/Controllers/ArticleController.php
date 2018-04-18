@@ -115,6 +115,7 @@ class ArticleController extends Controller
         $article->delete();
         return redirect('articles')->with('success','L\'article a bien été supprimer');
     }
+<<<<<<< HEAD
 
      /**
      * Remove the specified resource from storage.
@@ -183,4 +184,6 @@ class ArticleController extends Controller
 
       
     }
+=======
+>>>>>>> sylvain
 }
