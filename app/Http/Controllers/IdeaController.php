@@ -71,6 +71,7 @@ class IdeaController extends Controller
         $idea = Idea::find($id);
         return view('ideas.update',compact('idea','id'));
     }
+    
     public function view($id){
         $idea = Idea::find($id);
         $votes=Vote::all();
@@ -124,8 +125,7 @@ class IdeaController extends Controller
         $idea = Idea::find($id);
         $idea->visibility=false;
         $idea->save();
-
-
+        
         $users = User::all();
         foreach($users as $user){
             if($user->role==3){
