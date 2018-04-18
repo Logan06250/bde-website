@@ -40,19 +40,10 @@
 
                 </tbody>
 
-             
-
-                
-
-               
-
-
             </table>
 
 
-            <a href="" class="btn btn-success" role="button">Un bouton pour valider le panier</a>
-
-                  
+            <a href="" class="btn btn-success" role="button">Un bouton pour valider le panier</a>                 
 
         </div>
 
