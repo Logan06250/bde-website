@@ -142,9 +142,9 @@ class ArticleController extends Controller
 
         }
 
-        Cookie::queue(Cookie::make('list', $itemList, 5));
+        Cookie::queue(Cookie::make('list', $itemList, 2));
 
-        return redirect('articles')->with('success', $itemList);
+        return redirect('articles')->with('success', 'Tu as ajouter un article dans ton panier.');
        
     }
 
@@ -161,15 +161,17 @@ class ArticleController extends Controller
     {
         if (Cookie::get('list') !== null){
 
-            $items = Cookie::get('list');
+            $caddie = Cookie::get('list');
 
-            $element = (explode(',',$items));
+            $caddie = (explode(',',$caddie));
 
-            $caddie = array_count_values($element);
+            $items = array_count_values($caddie);
 
-            $basket = join(',',$caddie);
+            $itemsKeys = array_keys($items);
 
-            return view('articles.cart');
+            $articles = Article::all();
+
+            return view('articles.cart',compact('articles', 'items', 'itemsKeys', 'items'));
 
         }
 
@@ -179,7 +181,6 @@ class ArticleController extends Controller
             
         }
 
-
-        
+      
     }
 }
