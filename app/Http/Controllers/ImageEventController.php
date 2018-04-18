@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
-use App\Image;
+use App\ImageEvent;
 
-class ImageController extends Controller
+class ImageEventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,11 +37,10 @@ class ImageController extends Controller
     public function store(Request $request)
     {
 
-        $comment= new Comment();
-        $comment->content=$request->get('content');
-        $comment->event_id=$request->get('event_id');
-        $comment->userName=$request->get('userName');
-        $comment->save();
+        $imageEvent->content=$request->get('content');
+        $imageEvent->event_id=$request->get('event_id');
+        $imageEvent->userName=$request->get('userName');
+        $imageEvent->save();
         
         return redirect('events')->with('success', 'Votre image a été bien pris en compte');
     }

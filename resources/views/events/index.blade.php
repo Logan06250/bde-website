@@ -12,18 +12,14 @@
       <a style="margin-bottom:20px" href="{{action('EventController@create')}}" class="btn btn-success">AJouter un event</a>
     </br>
 
-
-    <h1>Evenements à venir</h1>
+    <h1>Evenement du mois</h1>
 
       @foreach($events as $event)
       @php
       $date=date('Y-m-d', $event['date']);
       $dateMois=date('Y-m', $event['date']);
         @endphp
-        @if($date>date('Y-m-d'))
-          @if($dateMois==date('Y-m'))
-            <h4>Evenement du mois</h4>
-          @endif
+        @if($date>date('Y-m-d') && $dateMois==date('Y-m') && $event['eventMois']==0)
       <div class="panel panel-default">
         <div class="panel-heading">
             <h2 class="panel-title">{{$event['name']}}</h2>
@@ -111,7 +107,8 @@
       @endforeach
 
 
-      <h1>Evenements à venir</h1>
+
+    <h1>Evenements à venir</h1>
 
       @foreach($events as $event)
       @php
@@ -119,9 +116,6 @@
       $dateMois=date('Y-m', $event['date']);
         @endphp
         @if($date>date('Y-m-d'))
-          @if($dateMois==date('Y-m'))
-            <h4>Evenement du mois</h4>
-          @endif
       <div class="panel panel-default">
         <div class="panel-heading">
             <h2 class="panel-title">{{$event['name']}}</h2>
@@ -130,7 +124,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-0">
-                       <h3> Le {{$date}} </h3>
+                      <h3> Le {{$date}} </h3>
                         <img src="{{asset('/images')}}/{{$event['image']}}" alt="{{$event['name']}}">
                         Description : <em>{{$event['description']}}</em>
                         </br>
@@ -179,104 +173,39 @@
                 <div class="form-group col-md-4">
                   <input style="width: 600px"type="textarea" class="form-control" name="content">
                   <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
-                  <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                  <button TYPE="submit" class="btn btn-info">Sinscrire à l'évènement'</button>
-                </form>
-              @endif
-              <!-- {{$nbVote = 0}} -->
-              @foreach($likes as $like)
-                @if($like['event_id'] == $event['id'])
-                  <!-- {{$nbVote++}} -->
-                @endif
-              @endforeach
-              Likes : {{$nbVote}}
-              @if(Auth::check())
-                {{$voted=false}}
-                @foreach($likes as $like)
-                  @if($like['event_id'] == $event['id'] && $like['user_id'] == Auth::user()->id)
-                    <form  action="{{action('LikeController@destroy', $like['id'])}}" method="post">
-                      {{ csrf_field() }}
-                      <input name="_method" type="hidden" value="DELETE">
-                      <button TYPE="submit"><i class="fas fa-thumbs-down"></i></button>
-                    </form>
-                    <!--{{$voted=true}}-->
-                    @break 
-                  @endif
-                @endforeach
-                @if($voted==false)
-                  <form method="post" action="{{url('likes')}}" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
-                    <input value ="{{Auth::user()->id}}" type="hidden" class="form-control" name="user_id">
-                    <button TYPE="submit"><i class="fas fa-thumbs-up"></i></button>
-                  </form>
-                @endif
-              @endif
-              </div>
-              <div class="col-md-7 col-md-offset-0">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <label for="Name" class="panel-title">Commentaire :</label>
-                  </div>
-                  <div class="panel-body">
-                    <div style="overflow-y:scroll; height:200px"> 
-                      @foreach($comments as $comment)
-                        @if($comment['event_id'] == $event['id'])
-                          <li class="list-group-item">
-                            <span class="badge">{{$comment['userName']}}</span>
-                            <span class="badge"><a href="{{action('CommentController@edit', $comment['id'])}}" >Modérer</a></span>
-                            {{$comment['content']}}
-                            </br>
-                          </li>
-                        @endif
-                      @endforeach
-                    </div>
-                    <li class="list-group-item">
-                      <form method="post" action="{{url('comments')}}" enctype="multipart/form-data">
-                      {{ csrf_field() }}
-                        <div class="row">
-                          <div class="form-group col-md-4">
-                            <input style="width: 600px"type="textarea" class="form-control" name="content">
-                            <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
-                            <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
-                            <button style="margin-top:15px" type="submit" class="btn btn-info">Poster le commentaire</button>
-                          </div>
-                        </div>
-                      </form>
-                    </li>
-                  </div>
+                  <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
+                  <button style="margin-top:15px" type="submit" class="btn btn-info">Poster le commentaire</button>
                 </div>
               </div>
-            </div>
-            <table>
-              <tr>
+            </form>
+          </li>
+        </ul>
+        </div>
+        </div>
+        <table>
+            <tr>
                 <td>
                     <a style="margin-right:20px" href="{{action('EventController@edit', $event['id'])}}" class="btn btn-warning">Edit</a>
                 </td>
-                <td>
-                  <form action="{{action('EventController@destroy', $event['id'])}}" method="post">
-                    {{ csrf_field() }}
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                  </form>
-                </td>  
-              </tr>
-            </table>
-          </div>
+              <td>
+          <form action="{{action('EventController@destroy', $event['id'])}}" method="post">
+          {{ csrf_field() }}
+            <input name="_method" type="hidden" value="DELETE">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+              </td>  
+        </tr>
+        </table>
         </div>
       </div>
-<<<<<<< HEAD
-  @endforeach
-  </div>
-@endsection               
-=======
       </div>
       @endif
       @endforeach
 
 
 
-      <h1>Evenements passés</h1>
+
+       <h1>Evenements passés</h1>
 
        @foreach($events as $event)
        @php
@@ -354,9 +283,5 @@
       </div>
       </div>
       @endif
-      @endforeach$event['date']
-
-
-    </tbody>
+      @endforeach
   @endsection
->>>>>>> bastien

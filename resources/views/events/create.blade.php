@@ -37,10 +37,10 @@ return redirect('ideas')->with('sucess','Information supprimer');<!-- create.bla
          <div class="row">
           <div class="col-md-4"></div>
             <div class="form-group col-md-4">
-                <lable>Visibility</lable>
-                <select name="visibility">
-                  <option value="1">Visible</option>
-                  <option value="0">Not visible</option>
+                <lable>Evenement du mois</lable>
+                <select name="eventMois">
+                  <option value="1">Non</option>
+                  <option value="0">Oui</option>
                 </select>
             </div>
         </div>
