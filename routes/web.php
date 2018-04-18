@@ -38,6 +38,8 @@ Route::resource('events','EventController');
 
 Route::resource('comments','CommentController');
 
+Route::resource('images','ImageController');
+
 Route::resource('registereds','RegisteredController');
 
 Route::resource('votes','VoteController');
