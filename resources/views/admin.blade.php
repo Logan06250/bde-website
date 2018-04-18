@@ -1,8 +1,7 @@
+@extends('layouts.app')
+
 @section('content')
-
-
 <div class="container">
-
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -15,6 +14,7 @@
                         </div>
                     @endif
                     <table class="table table-striped">
+
                         <tr>
                             <th>#</th>
                             <th>Nom</th>
@@ -22,6 +22,7 @@
                             <th>Role</th>
                             <th></th>
                         </tr>
+                        
                     @foreach ($users as $user)
                         <tr>
                             <td>
@@ -56,10 +57,7 @@
                 </table>
                 </div>
             </div>
-        </div>
+</div>
     </div>
 </div>
-
-
-
 @endsection
