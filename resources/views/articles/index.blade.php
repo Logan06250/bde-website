@@ -13,7 +13,8 @@
      <!-- Home of the shop -->
      <div class="jumbotron">
         <h2>Bienvenue sur la boutique du BDE Mister</h2>
-        <p>Vous trouverez ici des trucs bien et moins bien, chers et moins chers...</p>
+        <p>Tu trouveras ici des trucs bien et moins bien, chers et moins chers...</p>
+        <a href="{{action('ArticleController@showCart')}}" class="btn btn-primary" role="button">Mon panier</a>
      </div>
 
      <!-- Admin space -->
@@ -40,12 +41,14 @@
               <img src="{{asset('/images')}}/{{$article['image']}}" alt="{{$article['name']}}">
               <div class="caption">
                 <h3>{{$article['name']}}</h3>
+                <p>{{$article['category']}}</p>
                 <p>{{$article['description']}}</p>
                 <strong>{{$article['price']}} €</strong>
                 <br/>
                 <br/>
-                <p> <a href="#" class="btn btn-primary" role="button">Ajouter au panier</a> 
+                <p> <a href="{{action('ArticleController@addToCart', $article['id'])}}" class="btn btn-primary" role="button">Ajouter au panier</a> 
                   <hr/>
+
                   <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a>
                   <br/>
                   <br/>
@@ -54,7 +57,7 @@
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-danger" type="submit">Supprimer</button>
                   </form> </p>
-                
+                  
              </div>
             </div>
           </div>

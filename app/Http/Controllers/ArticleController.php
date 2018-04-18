@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
-use App\Http\Resources\Article as ArticleResource;
+use Cookie;
 
 class ArticleController extends Controller
 {
@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        return view('articles.create'); 
     }
 
     /**
@@ -116,4 +116,70 @@ class ArticleController extends Controller
         return redirect('articles')->with('success','L\'article a bien été supprimer');
     }
 
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    //  disgusting code that is not code to think about
+
+    public function addToCart($id)
+
+    {
+        if (Cookie::get('list') !== null){
+
+            $cake = Cookie::get('list');
+
+            $itemList = $cake . "," . $id;
+
+        }
+
+        else {
+
+            $itemList = $id;
+
+        }
+
+        Cookie::queue(Cookie::make('list', $itemList, 5));
+
+        return redirect('articles')->with('success', $itemList);
+       
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    //  disgusting code that is not code to think about
+
+    public function showCart()
+    {
+        if (Cookie::get('list') !== null){
+
+            $items = Cookie::get('list');
+
+            $element = (explode(',',$items));
+
+            $caddie = array_count_values($element);
+
+            $basket = join(',',$caddie);
+
+            return view('articles.cart');
+
+        }
+
+        else {
+            
+            return redirect ('articles')->with('success','Votre panier est vide');
+            
+        }
+
+
+        
+    }
 }

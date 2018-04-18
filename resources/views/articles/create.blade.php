@@ -25,6 +25,28 @@
             </div>
           </div>
 
+            <!-- Change article category -->
+            <div class="row">
+          <div class="col-md-0"></div>
+            <div class="form-group col-md-4">
+                <lable>Catégorie</lable>
+                <select name="category">
+                  <option value="">--</option>
+                  <option value="Vêtement">Vêtements</option>
+                  <option value="Evénement">Evènemtents</option>
+                  <option value="Accessoires">Accessoires</option>  
+                </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-0"></div>
+              <div class="form-group col-md-4">
+                <label for="Description">Si aucune catégorie ci-dessus ne correspond à votre atricle vous pouvez l'ajouter ici:</label>
+                <input type="text" class="form-control" name="category">
+              </div>
+            </div>
+
         <!-- article image -->
         <div class="row">
           <div class="col-md-0"></div>
@@ -42,7 +64,7 @@
               <input type="text" class="form-control" name="price">
             </div>
         </div>
-
+        
         <!-- button for add article -->
         <div class="row">
           <div class="col-md-0"></div>

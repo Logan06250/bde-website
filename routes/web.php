@@ -30,6 +30,7 @@ Route::get('/admin/bde/{id}', 'AdminController@beBDE');
 Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
+Route::get('/articles/cart/{id}', 'ArticleController@addToCart');
 Route::get('/notifications/{id}', 'NotificationController@destroy');
 
 Route::get('/ideas/transform/{id}', 'IdeaController@ideaEvent');
@@ -59,4 +60,6 @@ Route::get('/api/events', 'Api\EventController@showAll');
 Route::get('/api/articles', 'Api\ArticleController@showAll');
 
 Route::get('/api/{value}', 'Api\ApiController@show');
+
+Route::get('/atricles/cart', 'ArticleController@showCart');
 
