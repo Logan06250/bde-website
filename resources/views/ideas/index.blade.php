@@ -2,7 +2,7 @@
 @section('content')
   <div class="container">
     @if(Auth::check())
-        <a href="{{action('IdeaController@create')}}" class="btn btn-primary">Ajouter une idée</a><br />
+      <a style="margin-bottom:10px" href="{{action('IdeaController@create')}}" class="btn btn-primary">Ajouter une idée</a><br />
     @endif
     <div class="row">
       @foreach($ideas as $idea)
