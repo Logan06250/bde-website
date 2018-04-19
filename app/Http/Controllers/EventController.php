@@ -14,6 +14,7 @@ use App\Comment;
 use App\Registered;
 use App\Like;
 use App\User;
+use App\Image;
 use App\Http\Resources\Event as EventResource;
 
 class EventController extends Controller
@@ -58,7 +59,8 @@ class EventController extends Controller
         $comments=Comment::all();
         $registereds=Registered::all();
         $likes=Like::all();
-        return view('events.index',compact('events', 'comments', 'registereds','likes'));
+        $images = Image::all();
+        return view('events.index',compact('events', 'comments', 'registereds','likes', 'images'));
     }
 
     public function show($id)
@@ -144,8 +146,8 @@ class EventController extends Controller
             }
         }
         fclose($file);
-    };
-    return Response::stream($callback, 200, $headers);
-}
+        };
+        return Response::stream($callback, 200, $headers);
+    }
 
 }

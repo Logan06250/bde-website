@@ -297,6 +297,16 @@
                </li>
             @endif
           @endforeach
+          @foreach($images as $image)
+            @if($image['event_id'] == $event['id'])
+              <li class="list-group-item">
+                 <span class="badge">{{$image['userName']}}</span>
+                 <span class="badge"><a href="{{action('ImageEventController@delete', $image['id'])}}" >Supprimer</a></span>
+                 <img src="{{asset('/images')}}/{{$image['image']}}" alt="{{$event['name']}}">
+                 </br>
+               </li>
+            @endif
+          @endforeach
           </div>
           <li class="list-group-item">
             <form method="post" action="{{url('comments')}}" enctype="multipart/form-data">
@@ -307,15 +317,21 @@
                   <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
                   <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
                   <button style="margin-top:15px" type="submit" class="btn btn-info">Poster le commentaire</button>
+                </div>
+              </div>
+            </form>
+          </li>
+          <li class="list-group-item">
+            <form method="post" action="{{url('eventimages')}}" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <input type="file" name="image">
+                  <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
+                  <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
                   <button style="margin-top:15px" type="submit" class="btn btn-info">Poster une photo</button>
                 </div>
               </div>
-                <div class="row">
-                  <div class="col-md-4"></div>
-                     <div class="form-group col-md-4">
-                       <input type="file" name="image">    
-                    </div>
-                </div>
             </form>
           </li>
         </ul>

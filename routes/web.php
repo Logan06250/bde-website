@@ -45,6 +45,8 @@ Route::resource('events','EventController');
 
 Route::resource('comments','CommentController');
 
+Route::resource('eventimages','ImageEventController');
+
 Route::resource('images','ImageController');
 
 Route::resource('registereds','RegisteredController');
@@ -68,3 +70,7 @@ Route::get('/setCookie','CartController@reset');
 
 Route::get('donwload-csv/{id}', 'EventController@downloadCSV');
 Route::get('donwload-pdf/{id}', 'EventController@downloadPDF');
+
+ROute::get('eventimages/delete/{id}', 'ImageEventController@delete');
+
+
