@@ -56,8 +56,6 @@ $nombre = array_count_values($pieces);
         <?php $prix = $prix + $tot ?> 
      <?php } ?>
         
-       
-
       </tr>
       @endforeach
       <?php } //}
@@ -77,7 +75,7 @@ $ttc = $prix - $tva ; ?>
   </ul>
     
     </p>
-    <a href="#" class="btn btn-primary">valider le panier</a>
+    <td><a href="{{url('/soldupdate')}}" class="btn btn-warning">Valider le panier</a></td>
   </div>
 </div>
 

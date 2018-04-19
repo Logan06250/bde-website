@@ -75,4 +75,10 @@ Route::get('donwload-pdf/{id}', 'EventController@downloadPDF');
 
 Route::get('eventimages/delete/{id}', 'ImageEventController@delete');
 
+Route::get('/soldupdate', 'CartController@soldUpdate');
+
+
+
+
+
 

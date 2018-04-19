@@ -43,6 +43,7 @@
                 <h3>{{$article['name']}}</h3>
                 <p>{{$article['category']}}</p>
                 <p>{{$article['description']}}</p>
+                <p>Vendu : {{$article['sold']}}</p>
                 <strong>{{$article['price']}} €</strong>
                 <br/>
                 <br/>

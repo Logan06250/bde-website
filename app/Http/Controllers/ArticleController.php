@@ -49,6 +49,7 @@ class ArticleController extends Controller
         $article->name=$request->get('name');
         $article->description=$request->get('description');
         $article->price=$request->get('price');
+        $article->sold = 0;
         $article->image=$name;
         $article->save();
 
@@ -114,4 +115,6 @@ class ArticleController extends Controller
         $article->delete();
         return redirect('articles')->with('success','L\'article a bien été supprimer');
     }
+
+    
 }

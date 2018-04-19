@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Cookie;
+use App\Article;
 
 class cartController extends Controller
 {
@@ -57,6 +58,23 @@ class cartController extends Controller
         $name=Auth::user()->name;
             Cookie::queue(Cookie::make($name, '', 2));
         return redirect('/articles');
+    }
+
+    public function soldUpdate()
+    {
+        $value = Cookie::get(Auth::user()->name);
+        $pieces = explode(":", $value);
+        array_pop($pieces);
+
+        foreach($pieces as $piece){
+
+            $article = Article::find($piece);
+            $article->sold++;
+            $article->save();
+
+        }
+
+        return redirect('/articles')->with('success', 'Votre panier a été validé merci');
     }
 
 
