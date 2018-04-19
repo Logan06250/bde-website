@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
-use App\ImageEvent;
+use App\Image;
 
 class ImageEventController extends Controller
 {
@@ -37,10 +37,18 @@ class ImageEventController extends Controller
     public function store(Request $request)
     {
 
-        $imageEvent->content=$request->get('content');
-        $imageEvent->event_id=$request->get('event_id');
-        $imageEvent->userName=$request->get('userName');
-        $imageEvent->save();
+        $name="0";
+            if($request->hasfile('image'))
+             {
+                $file = $request->file('image');
+                $name=time().$file->getClientOriginalName();
+                $file->move(public_path().'/images/', $name);
+             }
+        $image= new Image();
+        $image->image = $name;
+        $image->event_id=$request->get('event_id');
+        $image->userName=$request->get('userName');
+        $image->save();
         
         return redirect('events')->with('success', 'Votre image a été bien pris en compte');
     }
@@ -85,8 +93,10 @@ class ImageEventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $image = Image::find($id);
+        $image->delete();
+        return redirect('events');
     }
 }

@@ -17,14 +17,16 @@
           <div class="col-md-4"></div>
             <div class="form-group col-md-4">
               <label for="title">Titre</label>
-              <input type="text" class="form-control" name="title" value="{{$idea->title}}">
+              <em>Ne doit contenir que des lettres de 2 à 15 caractères</em>
+              <input type="text" class="form-control" name="title" value="{{$idea->title}}" pattern="[A-za-z]+" minlength="2" maxlength="15">
             </div>
           </div>
         <div class="row">
           <div class="col-md-4"></div>
             <div class="form-group col-md-4">
               <label for="description">Descritpion:</label>
-              <input type="text" class="form-control" name="description" value="{{$idea->description}}">
+              <em>Ne doit pas contenir plus de 150 caractères</em>
+              <input type="text" class="form-control" name="description" value="{{$idea->description}}" maxlength="150">
             </div>
           </div>
         <div class="row">

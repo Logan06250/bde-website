@@ -8,6 +8,10 @@ use Cookie;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+                $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -115,6 +119,7 @@ class ArticleController extends Controller
         $article->delete();
         return redirect('articles')->with('success','L\'article a bien ?t? supprimer');
     }
+<<<<<<< HEAD
 
      /**
      * Remove the specified resource from storage.
@@ -183,4 +188,6 @@ class ArticleController extends Controller
 
 
     }
+=======
+>>>>>>> logan
 }

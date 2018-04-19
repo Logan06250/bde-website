@@ -43,6 +43,13 @@ Route::resource('events','EventController');
 
 Route::resource('comments','CommentController');
 
+<<<<<<< HEAD
+=======
+Route::resource('eventimages','ImageEventController');
+
+Route::resource('images','ImageController');
+
+>>>>>>> logan
 Route::resource('registereds','RegisteredController');
 
 Route::resource('votes','VoteController');
@@ -61,3 +68,14 @@ Route::get('/api/{value}', 'Api\ApiController@show');
 
 Route::get('/atricles/cart', 'ArticleController@showCart');
 
+<<<<<<< HEAD
+=======
+Route::get('/setCookie','CartController@reset');
+
+Route::get('donwload-csv/{id}', 'EventController@downloadCSV');
+Route::get('donwload-pdf/{id}', 'EventController@downloadPDF');
+
+ROute::get('eventimages/delete/{id}', 'ImageEventController@delete');
+
+
+>>>>>>> logan

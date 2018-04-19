@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Event;
 use App\Idea;
 
@@ -31,4 +32,7 @@ class HomeController extends Controller
 
         return view('home', compact('events', 'ideas'));
     }
+
+    
+    
 }

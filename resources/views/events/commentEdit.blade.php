@@ -9,7 +9,8 @@
         <div class="row">
             <div class="form-group col-md-4">
               <label for="description">Contenu du commentaire :</label>
-              <input type="text" class="form-control" name="content" value="{{$comment->content}}">
+              <em>Ne doit contenir plus de 150 caractères</em>
+              <input type="text" class="form-control" name="content" value="{{$comment->content}}" maxlength="150">
             </div>
           </div>
         <div class="row">

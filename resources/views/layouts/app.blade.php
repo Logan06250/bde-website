@@ -42,9 +42,7 @@
                                                     <!-- {{$nbNotif++}} -->
                                                 @endif
                                             @endforeach
-                                        @endif
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fas fa-bell"></i> Notifications <span class="badge">
-                                        @if (Auth::check())    
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fas fa-bell"></i> Notifications <span class="badge">   
                                             {{$nbNotif}}
                                         @endif
                                         </span></a>
