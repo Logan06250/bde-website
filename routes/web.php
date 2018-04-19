@@ -65,3 +65,6 @@ Route::get('/api/{value}', 'Api\ApiController@show');
 
 
 Route::get('/setCookie','CartController@reset');
+
+Route::get('donwload-csv/{id}', 'EventController@downloadCSV');
+Route::get('donwload-pdf/{id}', 'EventController@downloadPDF');
