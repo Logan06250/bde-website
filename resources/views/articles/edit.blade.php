@@ -4,7 +4,7 @@
 
 <div class="container">
 
-      <h2>Modification de l'article</h2>
+      <h2>Modification de l article</h2>
         <br/>
         <form method="post" action="{{action('ArticleController@update', $id)}}" enctype="multipart/form-data">
         {{csrf_field()}}        

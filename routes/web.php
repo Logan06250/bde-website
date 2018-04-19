@@ -43,19 +43,19 @@ Route::resource('events','EventController');
 
 Route::resource('comments','CommentController');
 
-<<<<<<< HEAD
-=======
 Route::resource('eventimages','ImageEventController');
 
 Route::resource('images','ImageController');
 
->>>>>>> logan
 Route::resource('registereds','RegisteredController');
 
 Route::resource('votes','VoteController');
 
 Route::resource('likes','LikeController');
 
+Route::resource('panier','CartController');
+
+Route::get('/addarticles/{n}', 'CartController@edit');
 Route::get('/api/events/{id}', 'Api\EventController@show');
 Route::get('/api/articles/{id}', 'Api\ArticleController@show');
 Route::get('/api/ideas/{id}', 'Api\IdeaController@show');
@@ -68,14 +68,17 @@ Route::get('/api/{value}', 'Api\ApiController@show');
 
 Route::get('/atricles/cart', 'ArticleController@showCart');
 
-<<<<<<< HEAD
-=======
 Route::get('/setCookie','CartController@reset');
 
 Route::get('donwload-csv/{id}', 'EventController@downloadCSV');
 Route::get('donwload-pdf/{id}', 'EventController@downloadPDF');
 
-ROute::get('eventimages/delete/{id}', 'ImageEventController@delete');
+Route::get('eventimages/delete/{id}', 'ImageEventController@delete');
+
+Route::get('/soldupdate', 'CartController@soldUpdate');
 
 
->>>>>>> logan
+
+
+
+

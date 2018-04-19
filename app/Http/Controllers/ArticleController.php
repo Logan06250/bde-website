@@ -8,10 +8,6 @@ use Cookie;
 
 class ArticleController extends Controller
 {
-    public function __construct()
-    {
-                $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        return view('articles.create'); 
     }
 
     /**
@@ -53,10 +49,11 @@ class ArticleController extends Controller
         $article->name=$request->get('name');
         $article->description=$request->get('description');
         $article->price=$request->get('price');
+        $article->sold = 0;
         $article->image=$name;
         $article->save();
 
-        return redirect('articles')->with('success', 'L\'article ? ?t? cr?er avec succ?s.');
+        return redirect('articles')->with('success', 'L\'article à été créer avec succès.');
     }
 
     /**
@@ -98,13 +95,12 @@ class ArticleController extends Controller
            $article->image=time().$file->getClientOriginalName();
            $file->move(public_path().'/images/', $article->image);
         }
-
+        
         $article->name=$request->get('name');
         $article->description=$request->get('description');
-        $article->price=$request->get('price');
+        $article->price=$request->get('price'); 
         $article->save();
-        return redirect('articles')->with('success', 'Les informations ont ?t? mises ? jour.');
-
+        return redirect('articles')->with('success', 'Les informations ont été mises à jour.');
     }
 
     /**
@@ -117,77 +113,8 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $article->delete();
-        return redirect('articles')->with('success','L\'article a bien ?t? supprimer');
-    }
-<<<<<<< HEAD
-
-     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    //  disgusting code that is not code to think about
-
-    public function addToCart($id)
-
-    {
-        if (Cookie::get('list') !== null){
-
-            $cake = Cookie::get('list');
-
-            $itemList = $cake . "," . $id;
-
-        }
-
-        else {
-
-            $itemList = $id;
-
-        }
-
-        Cookie::queue(Cookie::make('list', $itemList, 2));
-
-        return redirect('articles')->with('success', 'Tu as ajouter un article dans ton panier.');
-
+        return redirect('articles')->with('success','L\'article a bien été supprimer');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    //  disgusting code that is not code to think about
-
-    public function showCart()
-    {
-        if (Cookie::get('list') !== null){
-
-            $caddie = Cookie::get('list');
-
-            $caddie = (explode(',',$caddie));
-
-            $items = array_count_values($caddie);
-
-            $itemsKeys = array_keys($items);
-
-            $articles = Article::all();
-
-            return view('articles.cart',compact('articles', 'items', 'itemsKeys', 'items'));
-
-        }
-
-        else {
-
-            return redirect ('articles')->with('success','Votre panier est vide');
-
-        }
-
-
-    }
-=======
->>>>>>> logan
+    
 }
