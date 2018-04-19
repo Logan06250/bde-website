@@ -11,14 +11,16 @@ return redirect('ideas')->with('sucess','Information supprimer');<!-- create.bla
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="Name">Name:</label>
-            <input type="text" class="form-control" name="name">
+            <em>Ne doit contenir que des lettres et des chiffres de 2 à 15 caractères</em>
+            <input type="text" class="form-control" name="name" pattern="[A-za-z0-9]+" minlength="2" maxlength="15">
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
             <div class="form-group col-md-4">
               <label for="Description">Description:</label>
-              <input type="text" class="form-control" name="description">
+              <em>Ne doit contenir plus de 150 caractères</em>
+              <input type="text" class="form-control" name="description" maxlength="150">
             </div>
           </div>
         <div class="row">

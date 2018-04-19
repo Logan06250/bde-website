@@ -102,7 +102,7 @@
               {{ csrf_field() }}
               <div class="row">
                 <div class="form-group col-md-4">
-                  <input style="width: 600px"type="textarea" class="form-control" name="content">
+                  <input style="width: 600px"type="textarea" class="form-control" name="content" maxlength="150">
                   <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
                   <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
                   <button style="margin-top:15px" type="submit" class="btn btn-info">Poster le commentaire</button>
@@ -136,11 +136,7 @@
       </div>
       @endif
       @endforeach
-
-
-
     <h1>Evenements à venir</h1>
-
       @foreach($events as $event)
       @if($event['eventMois']==1)
       @php
@@ -232,7 +228,7 @@
               {{ csrf_field() }}
               <div class="row">
                 <div class="form-group col-md-4">
-                  <input style="width: 600px"type="textarea" class="form-control" name="content">
+                  <input style="width: 600px"type="textarea" class="form-control" name="content" maxlength="150">
                   <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
                   <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
                   <button style="margin-top:15px" type="submit" class="btn btn-info">Poster le commentaire</button>
@@ -258,8 +254,7 @@
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
           </form>
-              </td>
-                
+              </td>   
         </tr>
         </table>
         </div>
@@ -268,12 +263,7 @@
       @endif
       @endif
       @endforeach
-
-
-
-
        <h1>Evenements passés</h1>
-
        @foreach($events as $event)
        @php
       $date=date('Y-m-d', $event['date']);
@@ -292,7 +282,6 @@
                         <img src="{{asset('/images')}}/{{$event['image']}}" alt="{{$event['name']}}">
                         Description : <em>{{$event['description']}}</em>
                         </br>
-
                 </div>
           <div class="col-md-7 col-md-offset-0">
           <ul class="list-group">
@@ -309,12 +298,11 @@
           @endforeach
           </div>
           <li class="list-group-item">
-            
             <form method="post" action="{{url('comments')}}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="row">
                 <div class="form-group col-md-4">
-                  <input style="width: 600px"type="textarea" class="form-control" name="content">
+                  <input style="width: 600px"type="textarea" class="form-control" name="content" maxlength="150">
                   <input value ="{{$event['id']}}" type="hidden" class="form-control" name="event_id">
                   <input value ="{{Auth::user()->name}}" type="hidden" class="form-control" name="userName">
                   <button style="margin-top:15px" type="submit" class="btn btn-info">Poster le commentaire</button>
