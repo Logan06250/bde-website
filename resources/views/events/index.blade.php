@@ -8,15 +8,9 @@
         <p>{{ \Session::get('success') }}</p>
       </div><br />
      @endif
-
       <a style="margin-bottom:20px" href="{{action('EventController@create')}}" class="btn btn-success">AJouter un event</a>
-
-      
-
     </br>
-
     <h1>Evenement du mois</h1>
-
       @foreach($events as $event)
       @php
       $date=date('Y-m-d', $event['date']);

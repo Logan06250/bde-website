@@ -15,7 +15,7 @@
             </div>
             <hr />
             <div class="panel-body" >
-              {{$idea['description']}}
+              <p>{{$idea['description']}}</p>
             </div>
             <!-- {{$nbVote = 0}} -->
                 @foreach($votes as $vote)
@@ -47,9 +47,7 @@
                                 Vote total : <span class="badge"> {{$nbVote}} </span>
                             </form>
                         @endif
-                      @endif
-                        
-                        
+                      @endif      
           </div>
         </div>
       @endforeach
