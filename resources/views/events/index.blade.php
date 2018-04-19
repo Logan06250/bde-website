@@ -156,7 +156,6 @@
                         <img src="{{asset('/images')}}/{{$event['image']}}" alt="{{$event['name']}}">
                         Description : <em>{{$event['description']}}</em>
                         </br>
-
                     {{$voted=false}}
                     @foreach($registereds as $registered)
                       @if($registered['event_id'] == $event['id'] && $registered['user_id'] == Auth::user()->id)
@@ -214,11 +213,12 @@
               <div style="overflow-y:scroll; height:200px"> 
           @foreach($comments as $comment)
             @if($comment['event_id'] == $event['id'])
-              <li class="list-group-item">
-                <span class="badge">{{$comment['userName']}}</span>
-                {{$comment['content']}}
-                </br>
-              </li>
+               <li class="list-group-item">
+                 <span class="badge">{{$comment['userName']}}</span>
+               <span class="badge"><a href="{{action('CommentController@edit', $comment['id'])}}" >Modérer</a></span>
+                 {{$comment['content']}}
+                 </br>
+               </li>
             @endif
           @endforeach
           </div>
@@ -289,11 +289,12 @@
               <div style="overflow-y:scroll; height:200px"> 
           @foreach($comments as $comment)
             @if($comment['event_id'] == $event['id'])
-              <li class="list-group-item">
-                <span class="badge">{{$comment['userName']}}</span>
-                {{$comment['content']}}
-                </br>
-              </li>
+               <li class="list-group-item">
+                 <span class="badge">{{$comment['userName']}}</span>
+               <span class="badge"><a href="{{action('CommentController@edit', $comment['id'])}}" >Modérer</a></span>
+                 {{$comment['content']}}
+                 </br>
+               </li>
             @endif
           @endforeach
           </div>
