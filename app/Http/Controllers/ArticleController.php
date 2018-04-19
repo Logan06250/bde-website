@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create'); 
+        return view('articles.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class ArticleController extends Controller
         $article->image=$name;
         $article->save();
 
-        return redirect('articles')->with('success', 'L\'article à été créer avec succès.');
+        return redirect('articles')->with('success', 'L\'article ? ?t? cr?er avec succ?s.');
     }
 
     /**
@@ -94,13 +94,13 @@ class ArticleController extends Controller
            $article->image=time().$file->getClientOriginalName();
            $file->move(public_path().'/images/', $article->image);
         }
-        
+
         $article->name=$request->get('name');
         $article->description=$request->get('description');
-        $article->price=$request->get('price'); 
+        $article->price=$request->get('price');
         $article->save();
-        return redirect('articles')->with('success', 'Les informations ont été mises à jour.');
-       
+        return redirect('articles')->with('success', 'Les informations ont ?t? mises ? jour.');
+
     }
 
     /**
@@ -113,7 +113,7 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $article->delete();
-        return redirect('articles')->with('success','L\'article a bien été supprimer');
+        return redirect('articles')->with('success','L\'article a bien ?t? supprimer');
     }
 
      /**
@@ -145,7 +145,7 @@ class ArticleController extends Controller
         Cookie::queue(Cookie::make('list', $itemList, 2));
 
         return redirect('articles')->with('success', 'Tu as ajouter un article dans ton panier.');
-       
+
     }
 
     /**
@@ -176,11 +176,11 @@ class ArticleController extends Controller
         }
 
         else {
-            
+
             return redirect ('articles')->with('success','Votre panier est vide');
-            
+
         }
 
-      
+
     }
 }

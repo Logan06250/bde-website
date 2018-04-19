@@ -20,11 +20,9 @@ Auth::routes();
 
 
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::resource('articles', 'ArticleController');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('/ideas','IdeaController');
-
-
 
 
 Route::get('/admin/admin/{id}', 'AdminController@beAdmin');
@@ -32,6 +30,7 @@ Route::get('/admin/bde/{id}', 'AdminController@beBDE');
 Route::get('/admin/cesi/{id}', 'AdminController@beCesi');
 Route::get('/admin/student/{id}', 'AdminController@beStudent');
 
+Route::get('/articles/cart/{id}', 'ArticleController@addToCart');
 Route::get('/notifications/{id}', 'NotificationController@destroy');
 
 Route::get('/ideas/transform/{id}', 'IdeaController@ideaEvent');
@@ -43,8 +42,6 @@ Route::get('/idea/unprivate/{id}', 'IdeaController@unPrivate');
 Route::resource('events','EventController');
 
 Route::resource('comments','CommentController');
-
-Route::resource('images','ImageController');
 
 Route::resource('registereds','RegisteredController');
 
@@ -62,10 +59,5 @@ Route::get('/api/articles', 'Api\ArticleController@showAll');
 
 Route::get('/api/{value}', 'Api\ApiController@show');
 
-
-//Don't touch please
-//Shop routes
-
-Route::resource('articles', 'ArticleController');
-Route::get('/articles/cart/{id}', 'ArticleController@addToCart');
 Route::get('/atricles/cart', 'ArticleController@showCart');
+

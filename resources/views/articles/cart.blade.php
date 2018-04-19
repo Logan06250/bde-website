@@ -3,7 +3,7 @@
 @section('content')
  <!-- Page Content -->
  <div class="container">
-<td><a href="{{url('/setCookie')}}" class="btn btn-warning">vider le panier</a></td>
+
 
 <div class="container">
 
@@ -49,7 +49,7 @@
 </div>
 
 </div>
-<!-- /.container -->
+
 
 @endsection
 
