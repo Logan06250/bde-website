@@ -18,12 +18,10 @@ use App\Http\Controllers\Controller;
 
 Auth::routes();
 
-
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('articles', 'ArticleController');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('/ideas','IdeaController');
-
 
 Route::get('/admin/admin/{id}', 'AdminController@beAdmin');
 Route::get('/admin/bde/{id}', 'AdminController@beBDE');
@@ -53,9 +51,10 @@ Route::resource('votes','VoteController');
 
 Route::resource('likes','LikeController');
 
-Route::resource('panier','CartController');
+Route::resource('priceFilter','ArticleController');
 
-Route::get('/addarticles/{n}', 'CartController@edit');
+Route::get('/priceFilter', 'ArticleController@priceFilter');
+
 Route::get('/api/events/{id}', 'Api\EventController@show');
 Route::get('/api/articles/{id}', 'Api\ArticleController@show');
 Route::get('/api/ideas/{id}', 'Api\IdeaController@show');

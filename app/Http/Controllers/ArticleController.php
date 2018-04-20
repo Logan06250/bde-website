@@ -118,3 +118,85 @@ class ArticleController extends Controller
 
     
 }
+        return redirect('articles')->with('success','L\'article a bien ?t? supprimer');
+    }
+
+    public function priceFilter()
+    {
+        
+        $articles=Article::all();
+        return view('articles.priceFilter', compact('articles','priceMin','priceMax'));
+        
+    }
+
+
+
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    //  disgusting code that is not code to think about
+
+    public function addToCart($id)
+
+    {
+        if (Cookie::get('list') !== null){
+
+            $cake = Cookie::get('list');
+
+            $itemList = $cake . "," . $id;
+
+        }
+
+        else {
+
+            $itemList = $id;
+
+        }
+
+        Cookie::queue(Cookie::make('list', $itemList, 2));
+
+        return redirect('articles')->with('success', 'Tu as ajouter un article dans ton panier.');
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    //  disgusting code that is not code to think about
+
+    public function showCart()
+    {
+        if (Cookie::get('list') !== null){
+
+            $caddie = Cookie::get('list');
+
+            $caddie = (explode(',',$caddie));
+
+            $items = array_count_values($caddie);
+
+            $itemsKeys = array_keys($items);
+
+            $articles = Article::all();
+
+            return view('articles.cart',compact('articles', 'items', 'itemsKeys', 'items', 'cartPrice'));
+
+        }
+
+        else {
+
+            return redirect ('articles')->with('success','Votre panier est vide');
+
+        }
+
+
+    }
+}
