@@ -116,6 +116,17 @@ class ArticleController extends Controller
         return redirect('articles')->with('success','L\'article a bien ?t? supprimer');
     }
 
+    public function priceFilter()
+    {
+        
+        $articles=Article::all();
+        return view('articles.priceFilter', compact('articles','priceMin','priceMax'));
+        
+    }
+
+
+
+
      /**
      * Remove the specified resource from storage.
      *
@@ -171,7 +182,7 @@ class ArticleController extends Controller
 
             $articles = Article::all();
 
-            return view('articles.cart',compact('articles', 'items', 'itemsKeys', 'items'));
+            return view('articles.cart',compact('articles', 'items', 'itemsKeys', 'items', 'cartPrice'));
 
         }
 
