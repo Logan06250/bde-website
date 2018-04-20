@@ -12,7 +12,7 @@ return redirect('ideas')->with('sucess','Information supprimer');<!-- create.bla
           <div class="form-group col-md-4">
             <label for="Name">Name:</label>
             <em>Ne doit contenir que des lettres et des chiffres de 2 à 15 caractères</em>
-            <input type="text" class="form-control" name="name" pattern="[A-za-z0-9]+" minlength="2" maxlength="15">
+            <input type="text" class="form-control" name="name" pattern="[A-Za-z0-9\ ]+" minlength="2" maxlength="15">
           </div>
         </div>
         <div class="row">
