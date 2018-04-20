@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Auth;
 use Cookie;
 use App\Article;
+use App\User;
+use App\Mail\Command;
 
-class cartController extends Controller
+class cartController extends Controller 
 {
     /**
      * Display a listing of the resource.
@@ -73,10 +76,15 @@ class cartController extends Controller
             $article->save();
 
         }
+        $emails = User::where('role','=','3')->get();
+        foreach($emails as $email){
+            Mail::to($email['email'])->send(new Command());
+        }
+        
+        
 
-        return redirect('/articles')->with('success', 'Votre panier a été validé merci');
+        return redirect('/setCookie')->with('success', 'Votre panier a été validé merci');
     }
 
 
 }
-
