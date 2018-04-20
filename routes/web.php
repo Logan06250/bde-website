@@ -51,9 +51,7 @@ Route::resource('votes','VoteController');
 
 Route::resource('likes','LikeController');
 
-Route::resource('priceFilter','ArticleController');
-
-Route::get('/priceFilter', 'ArticleController@priceFilter');
+Route::resource('filter','FilterController');
 
 Route::get('/api/events/{id}', 'Api\EventController@show');
 Route::get('/api/articles/{id}', 'Api\ArticleController@show');
@@ -67,17 +65,12 @@ Route::get('/api/{value}', 'Api\ApiController@show');
 
 Route::get('/atricles/cart', 'ArticleController@showCart');
 
-Route::get('/setCookie','CartController@reset');
+Route::get('/reset','ArticleController@reset');
 
 Route::get('donwload-csv/{id}', 'EventController@downloadCSV');
 Route::get('donwload-pdf/{id}', 'EventController@downloadPDF');
 
 Route::get('eventimages/delete/{id}', 'ImageEventController@delete');
 
-Route::get('/soldupdate', 'CartController@soldUpdate');
-
-
-
-
-
+Route::get('/soldupdate', 'ArticleController@soldUpdate');
 
