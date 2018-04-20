@@ -65,8 +65,8 @@
             <p>En tant qu'association loi 1901 a but non lucratif, nous ne faisont pas payer la TVA :)</p>
 
 
-            <a href="" class="btn btn-success" role="button">Valider mon panier</a>
-            <a href="" class="btn btn-danger" role="button">Vider mon panier</a>                     
+            <a href="{{action('ArticleController@soldUpdate')}}" class="btn btn-success" role="button">Valider mon panier</a>
+            <a href="{{action('ArticleController@reset')}}" class="btn btn-danger" role="button">Vider mon panier</a>                     
 
         </div>
 

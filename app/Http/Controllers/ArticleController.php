@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use Cookie;
+use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Command;
+
 
 class ArticleController extends Controller
 {
@@ -37,6 +41,8 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        $name = "0";
 
         if($request->hasfile('image'))
          {
@@ -116,19 +122,6 @@ class ArticleController extends Controller
         return redirect('articles')->with('success','L\'article a bien été supprimer');
     }
 
-    
-}
-        return redirect('articles')->with('success','L\'article a bien ?t? supprimer');
-    }
-
-    public function priceFilter()
-    {
-        
-        $articles=Article::all();
-        return view('articles.priceFilter', compact('articles','priceMin','priceMax'));
-        
-    }
-
 
 
 
@@ -199,4 +192,40 @@ class ArticleController extends Controller
 
 
     }
+
+    public function soldUpdate(){
+
+        $value = Cookie::get('list');
+        $pieces = explode(":", $value);
+        array_pop($pieces);
+
+        foreach($pieces as $piece){
+
+            $article = Article::find($piece);
+            $article->sold++;
+            $article->save();
+
+        }
+
+        $emails = User::where('role','=','3')->get();
+
+        foreach($emails as $email){
+            
+            Mail::to($email['email'])->send(new Command());
+            
+        }
+
+        Cookie::queue(Cookie::make('list', '', 2));
+        return redirect('/articles')->with('success', 'Test');
+            
+    }
+
+    public function reset(){
+
+        Cookie::queue(Cookie::make('list', '', 2));
+        return redirect('/articles')->with('success', 'Test2');
+
+    }
+
+
 }

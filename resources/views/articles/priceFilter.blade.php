@@ -19,53 +19,11 @@
         @endauth
      </div>
 
-     <!-- Admin space -->
-     <div class="row">
-      <div class="col-sm-6 col-md-12">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Espace admin</h3>
-            <br/>
-            <a href="{{action('ArticleController@create')}}" class="btn btn-success" role="button">Ajouter un article</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-      <!-- filter space -->
-    <div class="row">
-      
-      <div class="col-sm-6 col-md-12">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3>Filtres</h3>
-            <br>
-            <p>Fitrer par prix</p>
-            <a href="" class="btn btn-warning" role="button">0 - 5 €</a>
-            <a href="" class="btn btn-warning" role="button">5 - 10 €</a>
-            <a href="" class="btn btn-warning" role="button">10 - 20 €</a>
-            <a href="" class="btn btn-warning" role="button">20 - 50 €</a>
-            <a href="" class="btn btn-warning" role="button">50 - 100 €</a>
-            <a href="" class="btn btn-warning" role="button">100 € et plus</a>
-            <br>
-            <br>
-            <p>Filtrer par categorie</p>
-            <a href="" class="btn btn-warning" role="button">Vetements</a>
-            <a href="" class="btn btn-warning" role="button">Accessoires</a>
-            <a href="" class="btn btn-warning" role="button">Evenements</a>
-            <a href="" class="btn btn-warning" role="button">Autres</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Most sales articles -->
-
     <!-- Display articles -->
     <div class="row">
       @foreach($articles as $article)
 
-        @if ( 'priceMin' <= $article['price'] && $article['price'] <= 'priceMax')
+        @if ( $priceMin <= $article['price'] && $article['price'] <= $priceMax)
             @php
             $date=date('Y-m-d', $article['date']);
             @endphp
@@ -83,14 +41,6 @@
                         <p> <a href="{{action('ArticleController@addToCart', $article['id'])}}" class="btn btn-primary" role="button">Ajouter au panier</a> 
                         <hr/>
 
-                        <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a>
-                        <br/>
-                        <br/>
-                        <form action="{{action('ArticleController@destroy', $article['id'])}}" method="post">
-                            {{csrf_field()}}
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn btn-danger" type="submit">Supprimer</button>
-                        </form> </p>
                         @endauth                                  
                     </div>
                     </div>

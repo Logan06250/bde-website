@@ -42,32 +42,47 @@
             <br>
             <p>Fitrer par prix</p>
 
-            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{action('ArticleController@priceFilter')}}" enctype="multipart/form-data" >
+            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{url('filter')}}" >
                 {{ csrf_field() }}
                 <input value="0" type="hidden" class="form-control" name="priceMin">
                 <input value="5" type="hidden" class="form-control" name="priceMax">
                 <button  class="btn btn-primary" type="submit" style="text-align:right">0 - 5 €</button>
             </form>
 
-            <input value="5" type="hidden" class="form-control" name="priceMin">
-            <input value="10" type="hidden" class="form-control" name="priceMax">
-            <a href="" class="btn btn-warning" role="button">5 - 10 €</a>
+            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{url('filter')}}" >
+                {{ csrf_field() }}
+                <input value="5" type="hidden" class="form-control" name="priceMin">
+                <input value="10" type="hidden" class="form-control" name="priceMax">
+                <button  class="btn btn-primary" type="submit" style="text-align:right">5 - 10 €</button>
+            </form>
 
-            <input value="10" type="hidden" class="form-control" name="priceMin">
-            <input value="20" type="hidden" class="form-control" name="priceMax">
-            <a href="" class="btn btn-warning" role="button">10 - 20 €</a>
+            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{url('filter')}}" >
+                {{ csrf_field() }}
+                <input value="10" type="hidden" class="form-control" name="priceMin">
+                <input value="20" type="hidden" class="form-control" name="priceMax">
+                <button  class="btn btn-primary" type="submit" style="text-align:right">10 - 20 €</button>
+            </form>
 
-            <input value="20" type="hidden" class="form-control" name="priceMin">
-            <input value="50" type="hidden" class="form-control" name="priceMax">
-            <a href="" class="btn btn-warning" role="button">20 - 50 €</a>
+            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{url('filter')}}" >
+                {{ csrf_field() }}
+                <input value="20" type="hidden" class="form-control" name="priceMin">
+                <input value="50" type="hidden" class="form-control" name="priceMax">
+                <button  class="btn btn-primary" type="submit" style="text-align:right">20 - 50 €</button>
+            </form>
 
-            <input value="50" type="hidden" class="form-control" name="priceMin">
-            <input value="10" type="hidden" class="form-control" name="priceMax">
-            <a href="" class="btn btn-warning" role="button">50 - 100 €</a>
+            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{url('filter')}}" >
+                {{ csrf_field() }}
+                <input value="50" type="hidden" class="form-control" name="priceMin">
+                <input value="100" type="hidden" class="form-control" name="priceMax">
+                <button  class="btn btn-primary" type="submit" style="text-align:right">50 - 100 €</button>
+            </form>
 
-            <input value="100" type="hidden" class="form-control" name="priceMin">
-            <input value="999999" type="hidden" class="form-control" name="priceMax">
-            <a href="" class="btn btn-warning" role="button">100 € et plus</a>
+            <form style="margin-bottom:8px; margin-left:8px;" method="post" action="{{url('filter')}}" >
+                {{ csrf_field() }}
+                <input value="100" type="hidden" class="form-control" name="priceMin">
+                <input value="10000" type="hidden" class="form-control" name="priceMax">
+                <button  class="btn btn-primary" type="submit" style="text-align:right">100 € et plus</button>
+            </form>
 
             <br>
             <br>
@@ -101,7 +116,7 @@
                 @auth
                 <br/>
                 <br/>
-                <p> <a href="{{url('/addarticles' , $article->id)}}" class="btn btn-primary" >Ajouter au panier</a> 
+                <p> <a href="{{action('ArticleController@addToCart', $article['id'])}}" class="btn btn-primary" >Ajouter au panier</a> 
                   <hr/>
 
                   <a href="{{action('ArticleController@edit', $article['id'])}}" class="btn btn-warning" role="button">Modifier</a>
