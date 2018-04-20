@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->integer('date');
-            $table->boolean('eventMois');
+            $table->boolean('eventMois')->default(1);
             $table->timestamps();
         });
     }
