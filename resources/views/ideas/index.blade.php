@@ -6,7 +6,7 @@
     @endif
     <div class="row">
       @foreach($ideas as $idea)
-      
+      @if($idea['visibility'] == true || Auth::user()->role == 4 || Auth::user()->role == 3 || Auth::user()->name == $idea['creator'])
         <div class="col-md-4">
           <div class="panel panel default" style="maxheight:300px;">
            <div class="panel-heading">
@@ -50,5 +50,7 @@
                       @endif      
           </div>
         </div>
+        @endif
       @endforeach
+    </div>
 @endsection
